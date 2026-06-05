@@ -2,6 +2,12 @@
 
 A beautiful, lively calendar website to track your daily DSA practice with glitter cursors, motivational cat, streaks, and topic notes!
 
+## 🌐 Live Demo
+
+> **👉 [https://akriti-bhardwaj.github.io/dsa-journey/](https://akriti-bhardwaj.github.io/dsa-journey/)**
+
+Hosted on GitHub Pages — available 24/7 from anywhere in the world! 🚀
+
 ---
 
 ## 📁 Project Structure
@@ -9,10 +15,9 @@ A beautiful, lively calendar website to track your daily DSA practice with glitt
 ```
 dsa-journey/
 ├── index.html        ← Main page
-├── css/
-│   └── style.css     ← All styles
-├── js/
-│   └── app.js        ← All logic
+├── style.css         ← All styles
+├── app.js            ← All logic
+├── .nojekyll         ← GitHub Pages config
 └── README.md
 ```
 
@@ -55,6 +60,8 @@ git push -u origin main
 
 Your site will be live at:
 **`https://YOUR_USERNAME.github.io/dsa-journey/`** 🎉
+
+> 💡 This project is already deployed at: **[https://akriti-bhardwaj.github.io/dsa-journey/](https://akriti-bhardwaj.github.io/dsa-journey/)**
 
 Share this link with anyone! They'll each get their own localStorage data.
 
@@ -104,9 +111,9 @@ Share this link with anyone! They'll each get their own localStorage data.
 
 ## 🎨 Customization
 
-Want to change the color scheme or cat messages? Open `js/app.js` and edit:
+Want to change the color scheme or cat messages? Open `app.js` and edit:
 - `catPool` array — change the motivational messages
 - `TOPICS` array — add/remove DSA topics
-- `css/style.css` `:root` section — tweak colors
+- `style.css` `:root` section — tweak colors
 
 Happy coding! 💜 Keep showing up every day!
