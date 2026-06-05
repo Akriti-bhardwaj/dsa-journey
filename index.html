@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Journey — Daily C++ Tracker</title>
+  <meta name="description" content="Track your daily DSA practice with this beautiful calendar. Stay consistent, stay motivated!" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Animated background -->
+  <div class="bg-scene">
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="bg-orb orb3"></div>
+    <div class="bg-orb orb4"></div>
+    <div class="bg-orb orb5"></div>
+    <div class="floating-shapes">
+      <span class="shape s1">✦</span>
+      <span class="shape s2">✧</span>
+      <span class="shape s3">⋆</span>
+      <span class="shape s4">✦</span>
+      <span class="shape s5">✧</span>
+      <span class="shape s6">⋆</span>
+      <span class="shape s7">✦</span>
+      <span class="shape s8">✧</span>
+    </div>
+  </div>
+
+  <div class="app-wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-glow"></div>
+      <div class="header-inner">
+        <div class="logo-area">
+          <span class="logo-icon">🐱</span>
+          <div>
+            <h1 class="site-title">DSA Journey</h1>
+            <p class="site-sub">Your daily C++ grind tracker</p>
+          </div>
+        </div>
+        <div class="header-badges">
+          <div class="badge badge-streak" id="headerStreak">🔥 0 day streak</div>
+          <div class="badge badge-total" id="headerTotal">✅ 0 days done</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Cat motivation card -->
+      <section class="cat-card" id="catCard">
+        <div class="cat-card-bg"></div>
+        <div class="cat-avatar" id="catAvatar">🐱</div>
+        <div class="cat-bubble">
+          <p class="cat-text" id="catText">Meow! Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you! 💜</p>
+        </div>
+        <div class="cat-sparkles">✨ ⭐ 💫 ✨</div>
+      </section>
+
+      <!-- Stats row -->
+      <section class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-value" id="statStreak">0</div>
+          <div class="stat-label">Day Streak</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-value" id="statTotal">0</div>
+          <div class="stat-label">Total Days</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📅</div>
+          <div class="stat-value" id="statMonth">0</div>
+          <div class="stat-label">This Month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💪</div>
+          <div class="stat-value" id="statPct">0%</div>
+          <div class="stat-label">Consistency</div>
+        </div>
+      </section>
+
+      <!-- Calendar -->
+      <section class="calendar-section">
+        <div class="calendar-card">
+          <div class="calendar-header">
+            <button class="nav-btn" id="prevBtn" aria-label="Previous month">&#8249;</button>
+            <div class="month-year" id="monthLabel">June 2025</div>
+            <button class="nav-btn" id="nextBtn" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="weekday-row">
+            <span>Sun</span><span>Mon</span><span>Tue</span>
+            <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="days-grid" id="daysGrid"></div>
+          <div class="cal-legend">
+            <span class="leg-item"><span class="leg-dot done-dot"></span> DSA Done</span>
+            <span class="leg-item"><span class="leg-dot today-dot"></span> Today</span>
+            <span class="leg-item"><span class="leg-dot missed-dot"></span> Missed</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Topics tracker -->
+      <section class="topics-section">
+        <h2 class="section-title">📚 C++ DSA Topic Tracker</h2>
+        <p class="section-sub">Click topics you've covered — your progress is saved!</p>
+        <div class="topics-grid" id="topicsGrid"></div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>Made with 💜 for DSA grinders · Keep showing up every day!</p>
+    </footer>
+  </div>
+
+  <!-- Day Modal -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Day check-in">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="modal-cat" id="modalCat">🐱</div>
+      <h2 class="modal-title" id="modalTitle">Check in for today</h2>
+      <p class="modal-date" id="modalDate"></p>
+
+      <!-- Toggle check-in -->
+      <div class="checkin-area">
+        <button class="checkin-btn" id="checkinBtn">
+          <span class="checkin-icon" id="checkinIcon">☐</span>
+          <span id="checkinLabel">Mark DSA Done</span>
+        </button>
+      </div>
+
+      <!-- Note area -->
+      <div class="note-area">
+        <div class="note-toggle-row">
+          <span class="note-label">📝 Add a note about today's topics?</span>
+          <button class="note-toggle-btn" id="noteToggleBtn">Add Note</button>
+        </div>
+        <div class="note-input-wrap" id="noteInputWrap" style="display:none;">
+          <textarea
+            class="note-textarea"
+            id="noteTextarea"
+            placeholder="e.g. Solved 3 graph BFS problems, revised binary search trees, practiced recursion on LeetCode..."
+            rows="4"
+          ></textarea>
+          <div class="note-actions">
+            <button class="btn-save-note" id="btnSaveNote">💾 Save Note</button>
+            <button class="btn-cancel-note" id="btnCancelNote">Cancel</button>
+          </div>
+        </div>
+        <div class="saved-note-display" id="savedNoteDisplay" style="display:none;">
+          <div class="saved-note-text" id="savedNoteText"></div>
+          <button class="edit-note-btn" id="editNoteBtn">✏️ Edit</button>
+        </div>
+      </div>
+
+      <div class="modal-footer-msg" id="modalFooterMsg"></div>
+    </div>
+  </div>
+
+  <!-- Confetti container -->
+  <div id="confettiContainer"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
