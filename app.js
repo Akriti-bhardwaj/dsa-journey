@@ -105,8 +105,7 @@ function updateCatMessage(streak) {
   } else {
     cat = catPool[Math.floor(Math.random() * catPool.length)];
   }
-  document.getElementById('catAvatar').textContent = cat.e;
-  document.getElementById('catText').textContent   = cat.msg;
+  document.getElementById('catText').textContent = cat.msg;
 }
 
 // ─── Calendar ─────────────────────────────────────────────────
@@ -176,9 +175,6 @@ function openModal(day, key) {
     `${DAYS[d.getDay()]}, ${MONTHS[viewMonth]} ${day}, ${viewYear}`;
   document.getElementById('modalTitle').textContent =
     isToday ? "Check in for today!" : isDone ? "Update this day" : "Log this past day";
-  document.getElementById('modalCat').textContent   =
-    isDone ? '😸' : isToday ? '🐱' : '😺';
-
   // Checkin button
   const btn   = document.getElementById('checkinBtn');
   const icon  = document.getElementById('checkinIcon');
