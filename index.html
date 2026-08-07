@@ -6,39 +6,23 @@
   <title>DSA Journey — Daily C++ Tracker</title>
   <meta name="description" content="Track your daily DSA practice with this beautiful calendar. Stay consistent, stay motivated!" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>" />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-trail" id="cursorTrail"></div>
-
-  <!-- Animated background -->
-  <div class="bg-scene">
-    <div class="bg-orb orb1"></div>
-    <div class="bg-orb orb2"></div>
-    <div class="bg-orb orb3"></div>
-    <div class="bg-orb orb4"></div>
-    <div class="bg-orb orb5"></div>
-    <div class="floating-shapes">
-      <span class="shape s1">✦</span>
-      <span class="shape s2">✧</span>
-      <span class="shape s3">⋆</span>
-      <span class="shape s4">✦</span>
-      <span class="shape s5">✧</span>
-      <span class="shape s6">⋆</span>
-      <span class="shape s7">✦</span>
-      <span class="shape s8">✧</span>
-    </div>
+  <!-- Soft ambient background -->
+  <div class="bg-wash">
+    <div class="bg-blob blob1"></div>
+    <div class="bg-blob blob2"></div>
   </div>
 
   <div class="app-wrapper">
 
     <!-- Header -->
     <header class="site-header">
-      <div class="header-glow"></div>
       <div class="header-inner">
         <div class="logo-area">
           <span class="logo-icon">🐱</span>
@@ -54,74 +38,107 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <div class="layout">
 
-      <!-- Cat motivation card -->
-      <section class="cat-card" id="catCard">
-        <div class="cat-card-bg"></div>
-        <div class="cat-avatar" id="catAvatar">🐱</div>
-        <div class="cat-bubble">
-          <p class="cat-text" id="catText">Meow! Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you! 💜</p>
-        </div>
-        <div class="cat-sparkles">✨ ⭐ 💫 ✨</div>
-      </section>
+      <main class="main-content">
 
-      <!-- Stats row -->
-      <section class="stats-row">
-        <div class="stat-card">
-          <div class="stat-icon">🔥</div>
-          <div class="stat-value" id="statStreak">0</div>
-          <div class="stat-label">Day Streak</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">✅</div>
-          <div class="stat-value" id="statTotal">0</div>
-          <div class="stat-label">Total Days</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">📅</div>
-          <div class="stat-value" id="statMonth">0</div>
-          <div class="stat-label">This Month</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">💪</div>
-          <div class="stat-value" id="statPct">0%</div>
-          <div class="stat-label">Consistency</div>
-        </div>
-      </section>
-
-      <!-- Calendar -->
-      <section class="calendar-section">
-        <div class="calendar-card">
-          <div class="calendar-header">
-            <button class="nav-btn" id="prevBtn" aria-label="Previous month">&#8249;</button>
-            <div class="month-year" id="monthLabel">June 2025</div>
-            <button class="nav-btn" id="nextBtn" aria-label="Next month">&#8250;</button>
+        <!-- Cat motivation card -->
+        <section class="cat-card" id="catCard">
+          <div class="cat-avatar" id="catAvatar">🐱</div>
+          <div class="cat-bubble">
+            <p class="cat-text" id="catText"> Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you! 💗</p>
           </div>
-          <div class="weekday-row">
-            <span>Sun</span><span>Mon</span><span>Tue</span>
-            <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </section>
+
+        <!-- Stats row -->
+        <section class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value" id="statStreak">0</div>
+            <div class="stat-label">Day Streak</div>
           </div>
-          <div class="days-grid" id="daysGrid"></div>
-          <div class="cal-legend">
-            <span class="leg-item"><span class="leg-dot done-dot"></span> DSA Done</span>
-            <span class="leg-item"><span class="leg-dot today-dot"></span> Today</span>
-            <span class="leg-item"><span class="leg-dot missed-dot"></span> Missed</span>
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-value" id="statTotal">0</div>
+            <div class="stat-label">Total Days</div>
           </div>
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value" id="statMonth">0</div>
+            <div class="stat-label">This Month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💪</div>
+            <div class="stat-value" id="statPct">0%</div>
+            <div class="stat-label">Consistency</div>
+          </div>
+        </section>
+
+        <!-- Calendar -->
+        <section class="calendar-section">
+          <div class="calendar-card">
+            <div class="calendar-header">
+              <button class="nav-btn" id="prevBtn" aria-label="Previous month">&#8249;</button>
+              <div class="month-year" id="monthLabel">June 2025</div>
+              <button class="nav-btn" id="nextBtn" aria-label="Next month">&#8250;</button>
+            </div>
+            <div class="weekday-row">
+              <span>Sun</span><span>Mon</span><span>Tue</span>
+              <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="days-grid" id="daysGrid"></div>
+            <div class="cal-legend">
+              <span class="leg-item"><span class="leg-dot done-dot"></span> DSA Done</span>
+              <span class="leg-item"><span class="leg-dot today-dot"></span> Today</span>
+              <span class="leg-item"><span class="leg-dot missed-dot"></span> Missed</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Topics tracker -->
+        <section class="topics-section">
+          <h2 class="section-title">C++ DSA Topic Tracker</h2>
+          <p class="section-sub">Click topics you've covered — your progress is saved!</p>
+          <div class="topics-grid" id="topicsGrid"></div>
+        </section>
+
+      </main>
+
+      <!-- Sidebar: reminders / tomorrow's plan -->
+      <aside class="sidebar">
+        <div class="sidebar-card reminders-card">
+          <div class="sidebar-card-head">
+            <h2 class="sidebar-title">📌 Tomorrow's Plan</h2>
+            <p class="sidebar-sub" id="tomorrowDateLabel">What to tackle next</p>
+          </div>
+
+          <form class="reminder-form" id="reminderForm" autocomplete="off">
+            <input
+              type="text"
+              class="reminder-input"
+              id="reminderInput"
+              placeholder="e.g. Revise DP on trees"
+              maxlength="120"
+            />
+            <button type="submit" class="reminder-add-btn" id="reminderAddBtn" aria-label="Add reminder">+</button>
+          </form>
+
+          <ul class="reminder-list" id="reminderList"></ul>
+
+          <p class="reminder-empty" id="reminderEmpty">Nothing planned yet — add what you want to cover tomorrow.</p>
         </div>
-      </section>
 
-      <!-- Topics tracker -->
-      <section class="topics-section">
-        <h2 class="section-title">📚 C++ DSA Topic Tracker</h2>
-        <p class="section-sub">Click topics you've covered — your progress is saved!</p>
-        <div class="topics-grid" id="topicsGrid"></div>
-      </section>
+        <div class="sidebar-card note-mini-card">
+          <h2 class="sidebar-title">📝 Today's Note</h2>
+          <p class="sidebar-sub" id="todayNotePreviewSub">From today's check-in</p>
+          <p class="today-note-preview" id="todayNotePreview">No note added for today yet. Tap today on the calendar to add one.</p>
+        </div>
+      </aside>
 
-    </main>
+    </div>
 
     <footer class="site-footer">
-      <p>Made with 💜 for DSA grinders · Keep showing up every day!</p>
+      <p>Made for DSA grinders · Keep showing up every day!</p>
     </footer>
   </div>
 
@@ -155,13 +172,13 @@
             rows="4"
           ></textarea>
           <div class="note-actions">
-            <button class="btn-save-note" id="btnSaveNote">💾 Save Note</button>
+            <button class="btn-save-note" id="btnSaveNote">Save Note</button>
             <button class="btn-cancel-note" id="btnCancelNote">Cancel</button>
           </div>
         </div>
         <div class="saved-note-display" id="savedNoteDisplay" style="display:none;">
           <div class="saved-note-text" id="savedNoteText"></div>
-          <button class="edit-note-btn" id="editNoteBtn">✏️ Edit</button>
+          <button class="edit-note-btn" id="editNoteBtn">Edit</button>
         </div>
       </div>
 
