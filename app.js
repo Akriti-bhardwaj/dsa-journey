@@ -2,6 +2,48 @@
 // DSA Journey — app.js
 // ============================================================
 
+// ─── Icon library (line icons, no emoji) ───────────────────────
+const ICONS = {
+  flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+  checkCircle: '<circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.3 2.3L15.5 9"/>',
+  checkSquare: '<rect x="4" y="4" width="16" height="16" rx="4"/><path d="m8.5 12.5 2.3 2.3L16 10"/>',
+  square: '<rect x="4" y="4" width="16" height="16" rx="4"/>',
+  calendar: '<rect x="3" y="4.5" width="18" height="16" rx="2.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="3" y1="10" x2="21" y2="10"/>',
+  trendUp: '<polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/>',
+  pin: '<path d="M12 21.5s7-7.2 7-12.2A7 7 0 0 0 5 9.3c0 5 7 12.2 7 12.2z"/><circle cx="12" cy="9.3" r="2.4"/>',
+  pencil: '<path d="M12.8 19.5H21"/><path d="M16.4 3.6a2.1 2.1 0 0 1 3 3L7.5 18.5l-4 1 1-4Z"/>',
+  x: '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+  trash: '<path d="M4 7h16"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/><path d="M9 7V4.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1V7"/>',
+  sparkle: '<path d="M12 2.5l1.9 5.6 5.6 1.9-5.6 1.9L12 17.5l-1.9-5.6-5.6-1.9 5.6-1.9L12 2.5z"/>',
+  // topic icons
+  box:      '<rect x="3" y="3" width="7.5" height="7.5" rx="1.4"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.4"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.4"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.4"/>',
+  link:     '<circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><line x1="11" y1="12" x2="13" y2="12"/>',
+  layers:   '<rect x="4" y="4" width="16" height="4" rx="1.2"/><rect x="4" y="10" width="16" height="4" rx="1.2"/><rect x="4" y="16" width="16" height="4" rx="1.2"/>',
+  tree:     '<circle cx="12" cy="4.3" r="2.2"/><line x1="12" y1="6.5" x2="6" y2="13.5"/><line x1="12" y1="6.5" x2="18" y2="13.5"/><circle cx="6" cy="15.5" r="2.2"/><circle cx="18" cy="15.5" r="2.2"/>',
+  share:    '<circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><line x1="8.4" y1="10.6" x2="15.6" y2="6.6"/><line x1="8.4" y1="13.4" x2="15.6" y2="17.4"/>',
+  table:    '<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/>',
+  barChart: '<line x1="4" y1="21" x2="4" y2="10"/><line x1="10" y1="21" x2="10" y2="4"/><line x1="16" y1="21" x2="16" y2="14"/><line x1="20" y1="21" x2="20" y2="8"/>',
+  search:   '<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+  repeat:   '<polyline points="17 1.5 21 5.5 17 9.5"/><path d="M3 12v-2a4 4 0 0 1 4-4h14"/><polyline points="7 22.5 3 18.5 7 14.5"/><path d="M21 12v2a4 4 0 0 1-4 4H3"/>',
+  hash:     '<line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/>',
+  mountain: '<path d="M12 3.5l9 16.5H3z"/><line x1="7.5" y1="13.5" x2="16.5" y2="13.5"/>',
+  type:     '<polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/>',
+  undo:     '<polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/>',
+  zap:      '<polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/>',
+  moveH:    '<polyline points="18 8 22 12 18 16"/><polyline points="6 8 2 12 6 16"/><line x1="2" y1="12" x2="22" y2="12"/>',
+  scan:     '<path d="M3 8V6a3 3 0 0 1 3-3h2"/><path d="M16 3h2a3 3 0 0 1 3 3v2"/><path d="M21 16v2a3 3 0 0 1-3 3h-2"/><path d="M8 21H6a3 3 0 0 1-3-3v-2"/><rect x="8.5" y="8.5" width="7" height="7" rx="1"/>',
+  calc:     '<rect x="4" y="2" width="16" height="20" rx="2.2"/><line x1="8" y1="6.5" x2="16" y2="6.5"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/><line x1="8" y1="19" x2="8.01" y2="19"/><line x1="12" y1="19" x2="12.01" y2="19"/>',
+  map:      '<polygon points="3 6.5 9 3.5 15 6.5 21 3.5 21 17.5 15 20.5 9 17.5 3 20.5"/><line x1="9" y1="3.5" x2="9" y2="17.5"/><line x1="15" y1="6.5" x2="15" y2="20.5"/>',
+  merge:    '<circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M6 8.4v4.6"/><path d="M6 18h6a6 6 0 0 0 6-6V8.4"/>',
+  target:   '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.1" fill="currentColor"/>',
+  database: '<ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/>',
+  quote:    '<path d="M7 8h4v4c0 2.2-1.2 3.8-4 3.8"/><path d="M14 8h4v4c0 2.2-1.2 3.8-4 3.8"/>',
+};
+
+function svgIcon(name, extraClass) {
+  return `<svg class="icon ${extraClass || ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]}</svg>`;
+}
+
 // ─── Storage ─────────────────────────────────────────────────
 const STORAGE_KEY = 'dsa_journey_v2';
 const TOPICS_KEY  = 'dsa_topics_v1';
@@ -43,6 +85,53 @@ function todayKey() {
   return dateKey(now.getFullYear(), now.getMonth(), now.getDate());
 }
 
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ─── Motion: count-up number animation ─────────────────────────
+function animateNumber(el, toValue, opts = {}) {
+  if (!el) return;
+  const suffix = opts.suffix || '';
+  const from = parseInt(el.dataset.rawValue || '0', 10) || 0;
+  const to   = toValue;
+  el.dataset.rawValue = to;
+
+  if (prefersReducedMotion || from === to) {
+    el.textContent = to + suffix;
+    return;
+  }
+
+  const duration = 650;
+  const start = performance.now();
+
+  function tick(t) {
+    const p = Math.min((t - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+    const val = Math.round(from + (to - from) * eased);
+    el.textContent = val + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = to + suffix;
+  }
+  requestAnimationFrame(tick);
+}
+
+// ─── Motion: animated consistency ring ─────────────────────────
+const RING_CIRCUMFERENCE = 2 * Math.PI * 25;
+function initRing() {
+  const ring = document.getElementById('consistencyRing');
+  if (!ring) return;
+  ring.style.strokeDasharray = `${RING_CIRCUMFERENCE}`;
+  ring.style.strokeDashoffset = `${RING_CIRCUMFERENCE}`;
+}
+function updateRing(pct) {
+  const ring = document.getElementById('consistencyRing');
+  if (!ring) return;
+  const clamped = Math.max(0, Math.min(100, pct));
+  const offset = RING_CIRCUMFERENCE * (1 - clamped / 100);
+  requestAnimationFrame(() => {
+    ring.style.strokeDashoffset = `${offset}`;
+  });
+}
+
 // ─── Stats ───────────────────────────────────────────────────
 function computeStreak() {
   let streak = 0;
@@ -73,59 +162,80 @@ function computeStats() {
 
 function updateStats() {
   const s = computeStats();
-  document.getElementById('statStreak').textContent = s.streak;
-  document.getElementById('statTotal').textContent  = s.total;
-  document.getElementById('statMonth').textContent  = s.monthDone;
-  document.getElementById('statPct').textContent    = s.pct + '%';
-  document.getElementById('headerStreak').textContent = `🔥 ${s.streak} day streak`;
-  document.getElementById('headerTotal').textContent  = `✅ ${s.total} days done`;
+
+  animateNumber(document.getElementById('statStreak'), s.streak);
+  animateNumber(document.getElementById('statTotal'), s.total);
+  animateNumber(document.getElementById('statMonth'), s.monthDone);
+  animateNumber(document.getElementById('statPct'), s.pct, { suffix: '%' });
+  animateNumber(document.getElementById('headerStreakNum'), s.streak);
+  animateNumber(document.getElementById('headerTotalNum'), s.total);
+  updateRing(s.pct);
+
+  const streakCard = document.querySelector('.stat-card-streak');
+  const flame = document.getElementById('headerFlameIcon');
+  if (streakCard) streakCard.classList.toggle('is-lit', s.streak > 0);
+  if (flame) flame.classList.toggle('is-lit', s.streak > 0);
+
   updateCatMessage(s.streak);
 }
 
-// ─── Cat Messages ─────────────────────────────────────────────
+// ─── Cat Messages (no emoji — mood conveyed via subtle motion) ──
 const catPool = [
-  { e: '🐱', msg: "Meow! Every line of code you write today is an investment in your future! Keep grinding! 💜" },
-  { e: '😺', msg: "Purr~ Consistency is the secret weapon of top engineers. You're building it right now! ✨" },
-  { e: '😸', msg: "Hewwo! Even solving ONE problem today keeps the momentum alive. You've got this! 🌸" },
-  { e: '🙀', msg: "Oh no, don't skip today! Your streak is precious — protect it like your life depends on it! 🔥" },
-  { e: '😻', msg: "I believe in you SO much! The grind is temporary, but the skills last forever. Let's go! 💖" },
-  { e: '🐈', msg: "Pspsps... come solve some DSA! Every expert was once a beginner who kept showing up! 💜" },
+  "Every line of code you write today is an investment in your future. Keep grinding.",
+  "Consistency is the secret weapon of top engineers. You're building it right now.",
+  "Even solving one problem today keeps the momentum alive. You've got this.",
+  "Don't skip today — your streak is precious. Protect it.",
+  "I believe in you so much. The grind is temporary, but the skills last forever.",
+  "Come solve some DSA. Every expert was once a beginner who kept showing up.",
 ];
 
 function updateCatMessage(streak) {
-  let cat;
+  const catCard = document.getElementById('catCard');
+  let msg;
+  let mood = 'neutral';
+
   if (streak >= 30) {
-    cat = { e: '👑🐱', msg: `LEGENDARY! ${streak}-day streak!! You are an absolute DSA MACHINE! The algorithm bows to you! 🎉` };
+    mood = 'legendary';
+    msg = `Legendary! ${streak}-day streak. You are an absolute DSA machine — the algorithm bows to you.`;
   } else if (streak >= 14) {
-    cat = { e: '🏆🐱', msg: `${streak} days in a ROW!! You're unstoppable! Top coders are made exactly like this! 🌟` };
+    mood = 'great';
+    msg = `${streak} days in a row. You're unstoppable — top coders are made exactly like this.`;
   } else if (streak >= 7) {
-    cat = { e: '🌟😸', msg: `${streak}-day streak! You're on FIRE! One week of consistency — keep that energy going! 🔥` };
+    mood = 'great';
+    msg = `${streak}-day streak. You're on fire — one week of consistency, keep that energy going.`;
   } else if (streak === 0) {
-    cat = { e: '🥺🐱', msg: "Miss me? Let's start fresh today! Every day you don't code is a day you could've grown. Come back! 💜" };
+    mood = 'low';
+    msg = "Miss me? Let's start fresh today. Every day you don't code is a day you could've grown. Come back.";
   } else {
-    cat = catPool[Math.floor(Math.random() * catPool.length)];
+    msg = catPool[Math.floor(Math.random() * catPool.length)];
   }
-  document.getElementById('catText').textContent = cat.msg;
+
+  document.getElementById('catText').textContent = msg;
+  if (catCard) {
+    catCard.classList.remove('mood-low', 'mood-great', 'mood-legendary');
+    if (mood !== 'neutral') catCard.classList.add(`mood-${mood}`);
+  }
 }
 
 // ─── Calendar ─────────────────────────────────────────────────
-function renderCalendar() {
+function renderCalendar(direction) {
   document.getElementById('monthLabel').textContent = `${MONTHS[viewMonth]} ${viewYear}`;
 
-  const grid     = document.getElementById('daysGrid');
-  grid.innerHTML = '';
+  const grid = document.getElementById('daysGrid');
 
   const firstDay    = new Date(viewYear, viewMonth, 1).getDay();
   const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
   const tk          = todayKey();
 
-  // Empty leading cells
+  const frag = document.createDocumentFragment();
+
   for (let i = 0; i < firstDay; i++) {
     const el = document.createElement('div');
     el.className = 'day-cell empty';
-    grid.appendChild(el);
+    frag.appendChild(el);
   }
 
+  let dayIndex = 0;
   for (let d = 1; d <= daysInMonth; d++) {
     const k         = dateKey(viewYear, viewMonth, d);
     const entry     = data[k] || {};
@@ -138,7 +248,7 @@ function renderCalendar() {
 
     const el = document.createElement('div');
 
-    let classes = 'day-cell';
+    let classes = 'day-cell day-enter';
     if (isDone)           classes += ' done';
     else if (isFuture)    classes += ' normal future';
     else if (isPast)      classes += ' missed';
@@ -146,9 +256,11 @@ function renderCalendar() {
     if (isToday)          classes += ' today-cell';
     if (hasNote)          classes += ' has-note';
     el.className = classes;
+    el.style.animationDelay = (dayIndex * 12) + 'ms';
+    dayIndex++;
 
     if (isDone) {
-      el.innerHTML = `<span class="day-tick">✅</span><span class="day-num">${d}</span>`;
+      el.innerHTML = `<span class="day-tick">${svgIcon('checkCircle')}</span><span class="day-num">${d}</span>`;
     } else {
       el.innerHTML = `<span class="day-num">${d}</span>`;
     }
@@ -157,8 +269,18 @@ function renderCalendar() {
       el.addEventListener('click', () => openModal(d, k));
     }
 
-    grid.appendChild(el);
+    frag.appendChild(el);
   }
+
+  const card = document.querySelector('.calendar-card');
+  if (direction && !prefersReducedMotion && card) {
+    card.classList.remove('slide-left', 'slide-right');
+    void card.offsetWidth; // restart animation
+    card.classList.add(direction === 'next' ? 'slide-left' : 'slide-right');
+  }
+
+  grid.innerHTML = '';
+  grid.appendChild(frag);
 }
 
 // ─── Modal ────────────────────────────────────────────────────
@@ -181,11 +303,11 @@ function openModal(day, key) {
   const label = document.getElementById('checkinLabel');
   if (isDone) {
     btn.classList.add('checked');
-    icon.textContent  = '✅';
+    icon.innerHTML  = svgIcon('checkSquare');
     label.textContent = 'DSA Done! (click to undo)';
   } else {
     btn.classList.remove('checked');
-    icon.textContent  = '☐';
+    icon.innerHTML  = svgIcon('square');
     label.textContent = 'Mark DSA Done';
   }
 
@@ -231,15 +353,18 @@ document.getElementById('checkinBtn').addEventListener('click', () => {
   const icon  = document.getElementById('checkinIcon');
   const label = document.getElementById('checkinLabel');
 
+  btn.classList.add('pop');
+  setTimeout(() => btn.classList.remove('pop'), 260);
+
   if (newVal) {
     btn.classList.add('checked');
-    icon.textContent  = '✅';
+    icon.innerHTML  = svgIcon('checkSquare');
     label.textContent = 'DSA Done! (click to undo)';
-    document.getElementById('modalFooterMsg').textContent = '🎉 Amazing! Keep it up!';
+    document.getElementById('modalFooterMsg').textContent = 'Amazing! Keep it up.';
     shootConfetti();
   } else {
     btn.classList.remove('checked');
-    icon.textContent  = '☐';
+    icon.innerHTML  = svgIcon('square');
     label.textContent = 'Mark DSA Done';
     document.getElementById('modalFooterMsg').textContent = '';
   }
@@ -298,7 +423,7 @@ document.getElementById('btnSaveNote').addEventListener('click', () => {
     toggleBtn.textContent   = 'Add Note';
   }
 
-  document.getElementById('modalFooterMsg').textContent = note ? '📝 Note saved!' : '🗑️ Note cleared.';
+  document.getElementById('modalFooterMsg').textContent = note ? 'Note saved.' : 'Note cleared.';
   setTimeout(() => {
     document.getElementById('modalFooterMsg').textContent = '';
   }, 2000);
@@ -347,52 +472,56 @@ document.addEventListener('keydown', e => {
 document.getElementById('prevBtn').addEventListener('click', () => {
   viewMonth--;
   if (viewMonth < 0) { viewMonth = 11; viewYear--; }
-  renderCalendar();
+  renderCalendar('prev');
 });
 document.getElementById('nextBtn').addEventListener('click', () => {
   viewMonth++;
   if (viewMonth > 11) { viewMonth = 0; viewYear++; }
-  renderCalendar();
+  renderCalendar('next');
 });
 
 // ─── Topics ───────────────────────────────────────────────────
 const TOPICS = [
-  { icon: '📦', name: 'Arrays' },
-  { icon: '🔗', name: 'Linked Lists' },
-  { icon: '📚', name: 'Stacks & Queues' },
-  { icon: '🌲', name: 'Trees' },
-  { icon: '🕸️', name: 'Graphs' },
-  { icon: '💡', name: 'Dynamic Programming' },
-  { icon: '🔃', name: 'Sorting' },
-  { icon: '🔍', name: 'Binary Search' },
-  { icon: '🔄', name: 'Recursion' },
-  { icon: '#️⃣', name: 'Hashing' },
-  { icon: '⛰️', name: 'Heaps / Priority Queue' },
-  { icon: '🔤', name: 'Tries' },
-  { icon: '↩️', name: 'Backtracking' },
-  { icon: '⚡', name: 'Bit Manipulation' },
-  { icon: '👉', name: 'Two Pointers' },
-  { icon: '🪟', name: 'Sliding Window' },
-  { icon: '🧮', name: 'Math & Number Theory' },
-  { icon: '🗺️', name: 'Graph — BFS/DFS' },
-  { icon: '🌉', name: 'Union Find' },
-  { icon: '🎯', name: 'Greedy' },
-  { icon: '💾', name: 'STL in C++' },
-  { icon: '🧵', name: 'String Algorithms' },
+  { icon: 'box',      name: 'Arrays' },
+  { icon: 'link',      name: 'Linked Lists' },
+  { icon: 'layers',    name: 'Stacks & Queues' },
+  { icon: 'tree',      name: 'Trees' },
+  { icon: 'share',     name: 'Graphs' },
+  { icon: 'table',     name: 'Dynamic Programming' },
+  { icon: 'barChart',  name: 'Sorting' },
+  { icon: 'search',    name: 'Binary Search' },
+  { icon: 'repeat',    name: 'Recursion' },
+  { icon: 'hash',      name: 'Hashing' },
+  { icon: 'mountain',  name: 'Heaps / Priority Queue' },
+  { icon: 'type',      name: 'Tries' },
+  { icon: 'undo',      name: 'Backtracking' },
+  { icon: 'zap',       name: 'Bit Manipulation' },
+  { icon: 'moveH',     name: 'Two Pointers' },
+  { icon: 'scan',      name: 'Sliding Window' },
+  { icon: 'calc',      name: 'Math & Number Theory' },
+  { icon: 'map',       name: 'Graph — BFS/DFS' },
+  { icon: 'merge',     name: 'Union Find' },
+  { icon: 'target',    name: 'Greedy' },
+  { icon: 'database',  name: 'STL in C++' },
+  { icon: 'quote',     name: 'String Algorithms' },
 ];
 
 function renderTopics() {
   const grid = document.getElementById('topicsGrid');
   grid.innerHTML = '';
-  TOPICS.forEach(({ icon, name }) => {
+  TOPICS.forEach(({ icon, name }, i) => {
+    const isActive = activeTopics.includes(name);
     const pill = document.createElement('div');
-    pill.className = 'topic-pill' + (activeTopics.includes(name) ? ' active' : '');
-    pill.innerHTML = `<span>${icon}</span><span>${name}</span>${activeTopics.includes(name) ? '<span class="check-mark">✓</span>' : ''}`;
+    pill.className = 'topic-pill' + (isActive ? ' active' : '');
+    pill.style.animationDelay = (i * 25) + 'ms';
+    pill.innerHTML = `${svgIcon(icon, 'topic-icon')}<span>${name}</span><span class="check-mark">${svgIcon('checkCircle')}</span>`;
     pill.addEventListener('click', () => {
       if (activeTopics.includes(name)) {
         activeTopics = activeTopics.filter(t => t !== name);
       } else {
         activeTopics.push(name);
+        pill.classList.add('pop');
+        setTimeout(() => pill.classList.remove('pop'), 260);
       }
       saveTopics(activeTopics);
       renderTopics();
@@ -466,7 +595,7 @@ function renderReminders() {
     check.className = 'reminder-check';
     check.type = 'button';
     check.setAttribute('aria-label', item.done ? 'Mark as not done' : 'Mark as done');
-    check.textContent = item.done ? '✓' : '';
+    check.innerHTML = item.done ? svgIcon('checkCircle') : '';
     check.addEventListener('click', () => {
       item.done = !item.done;
       saveReminders(reminders);
@@ -481,11 +610,14 @@ function renderReminders() {
     del.className = 'reminder-delete';
     del.type = 'button';
     del.setAttribute('aria-label', 'Delete reminder');
-    del.textContent = '✕';
+    del.innerHTML = svgIcon('x');
     del.addEventListener('click', () => {
-      reminders = reminders.filter(r => r.id !== item.id);
-      saveReminders(reminders);
-      renderReminders();
+      li.classList.add('leaving');
+      setTimeout(() => {
+        reminders = reminders.filter(r => r.id !== item.id);
+        saveReminders(reminders);
+        renderReminders();
+      }, prefersReducedMotion ? 0 : 220);
     });
 
     li.appendChild(check);
@@ -526,7 +658,22 @@ function renderTodayNotePreview() {
   }
 }
 
+// ─── Static icon mounts ─────────────────────────────────────────
+function mountStaticIcons() {
+  document.getElementById('headerFlameIcon').innerHTML = svgIcon('flame');
+  document.getElementById('headerCheckIcon').innerHTML = svgIcon('checkCircle');
+  document.getElementById('iconStreak').innerHTML = svgIcon('flame');
+  document.getElementById('iconTotal').innerHTML = svgIcon('checkCircle');
+  document.getElementById('iconMonth').innerHTML = svgIcon('calendar');
+  document.getElementById('iconPin').innerHTML = svgIcon('pin');
+  document.getElementById('iconNoteTitle').innerHTML = svgIcon('pencil');
+  document.getElementById('iconNoteLabel').innerHTML = svgIcon('pencil');
+  document.getElementById('modalClose').innerHTML = svgIcon('x');
+}
+
 // ─── Init ─────────────────────────────────────────────────────
+mountStaticIcons();
+initRing();
 renderCalendar();
 renderTopics();
 updateStats();
