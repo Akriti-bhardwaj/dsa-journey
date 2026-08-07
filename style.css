@@ -967,3 +967,175 @@ body {
   .day-num { font-size: 0.78rem; }
   .cat-card { flex-direction: column; text-align: center; }
 }
+
+/* ===== ICON SYSTEM ===== */
+.icon { width: 100%; height: 100%; display: block; }
+
+.badge-icon {
+  width: 15px; height: 15px;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.badge { display: inline-flex; align-items: center; gap: 7px; }
+
+.icon-flame.is-lit { color: var(--gold); }
+
+.title-icon {
+  width: 16px; height: 16px;
+  display: inline-flex;
+  margin-right: 7px;
+  vertical-align: -3px;
+  color: var(--rose-deep);
+}
+
+.note-label { display: inline-flex; align-items: center; }
+
+.stat-icon {
+  width: 22px; height: 22px;
+  margin: 0 auto 8px;
+  color: var(--grey-500);
+  transition: color 0.25s, transform 0.25s;
+}
+
+.stat-card-streak.is-lit .stat-icon {
+  color: var(--gold);
+  animation: flameFlicker 1.8s ease-in-out infinite;
+}
+
+@keyframes flameFlicker {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25%      { transform: scale(1.06) rotate(-2deg); }
+  50%      { transform: scale(0.97) rotate(1deg); }
+  75%      { transform: scale(1.04) rotate(2deg); }
+}
+
+.stat-card-streak.is-lit {
+  box-shadow: 0 4px 14px rgba(216, 162, 75, 0.18), var(--shadow-card);
+}
+
+.day-tick .icon { width: 16px; height: 16px; }
+.day-tick { display: inline-flex; }
+
+.checkin-icon { width: 20px; height: 20px; display: inline-flex; }
+
+.modal-close { padding: 0; }
+.modal-close .icon { width: 14px; height: 14px; }
+
+.topic-icon { width: 15px; height: 15px; flex-shrink: 0; }
+
+.topic-pill .check-mark {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.22s var(--ease-spring), opacity 0.18s;
+  display: inline-flex;
+}
+.topic-pill.active .check-mark {
+  width: 13px; height: 13px;
+  opacity: 1;
+}
+
+.reminder-check .icon { width: 12px; height: 12px; }
+.reminder-delete .icon { width: 13px; height: 13px; display: block; }
+.reminder-delete { display: inline-flex; align-items: center; justify-content: center; }
+
+/* ===== CONSISTENCY RING ===== */
+.stat-card-ring { position: relative; }
+.ring-wrap {
+  position: relative;
+  width: 60px; height: 60px;
+  margin: 0 auto 8px;
+}
+.ring-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring-track {
+  fill: none;
+  stroke: var(--grey-200);
+  stroke-width: 4.5;
+}
+.ring-fill {
+  fill: none;
+  stroke: var(--rose-deep);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s var(--ease-spring);
+}
+.ring-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem !important;
+  margin-bottom: 0 !important;
+}
+.stat-card-ring .stat-label { margin-top: 0; }
+
+/* ===== CAT CARD MOODS ===== */
+.cat-card { transition: box-shadow 0.4s, border-color 0.4s; }
+
+.cat-card.mood-low {
+  border-color: var(--grey-300);
+}
+.cat-card.mood-low .cat-icon-hero { animation-duration: 6s; opacity: 0.75; }
+
+.cat-card.mood-great {
+  border-color: var(--gold);
+  box-shadow: 0 4px 14px rgba(216, 162, 75, 0.16), var(--shadow-card);
+}
+
+.cat-card.mood-legendary {
+  border-color: var(--gold);
+  box-shadow: 0 4px 18px rgba(216, 162, 75, 0.28), var(--shadow-card-hover);
+  animation: legendaryGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes legendaryGlow {
+  0%, 100% { box-shadow: 0 4px 18px rgba(216, 162, 75, 0.22), var(--shadow-card-hover); }
+  50%      { box-shadow: 0 4px 26px rgba(216, 162, 75, 0.4), var(--shadow-card-hover); }
+}
+
+/* ===== POP MICRO-INTERACTION ===== */
+@keyframes popBounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.checkin-btn.pop, .topic-pill.pop { animation: popBounce 0.26s var(--ease-spring); }
+
+/* ===== CALENDAR: DAY-BY-DAY STAGGERED ENTRANCE ===== */
+@keyframes dayPopIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.day-cell.day-enter { animation: dayPopIn 0.32s var(--ease-spring) both; }
+
+/* ===== CALENDAR: MONTH SLIDE TRANSITION ===== */
+@keyframes slideLeftIn {
+  from { transform: translateX(18px); opacity: 0.4; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideRightIn {
+  from { transform: translateX(-18px); opacity: 0.4; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+.calendar-card.slide-left  .days-grid,
+.calendar-card.slide-left  .month-year   { animation: slideLeftIn 0.32s var(--ease-spring) both; }
+.calendar-card.slide-right .days-grid,
+.calendar-card.slide-right .month-year   { animation: slideRightIn 0.32s var(--ease-spring) both; }
+
+/* ===== TOPIC PILL ENTRANCE ===== */
+.topic-pill { animation: riseIn 0.4s var(--ease-spring) both; }
+
+/* ===== REMINDER LEAVE ANIMATION ===== */
+.reminder-item {
+  transition: opacity 0.2s, transform 0.2s, max-height 0.22s;
+  max-height: 60px;
+  overflow: hidden;
+}
+.reminder-item.leaving {
+  opacity: 0;
+  transform: translateX(12px);
+  max-height: 0;
+  padding-top: 0; padding-bottom: 0;
+  margin: 0;
+}
