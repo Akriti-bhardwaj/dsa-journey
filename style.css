@@ -141,16 +141,53 @@ body {
 
 .logo-area { display: flex; align-items: center; gap: 16px; }
 
-.logo-icon {
-  font-size: 2.6rem;
-  animation: logoSway 5s ease-in-out infinite;
-  transform-origin: 50% 90%;
+/* ===== MINIMALIST CAT ICON (shared across header, cat-card, modal, calendar corner) ===== */
+.cat-icon { color: var(--grey-900); display: flex; flex-shrink: 0; }
+.cat-illustration { width: 100%; height: 100%; overflow: visible; }
+
+.cat-icon-logo { width: 44px; height: 44px; }
+.cat-icon-hero { width: 62px; height: 62px; }
+.cat-icon-modal { width: 50px; height: 50px; margin: 0 auto 10px; }
+
+.cat-icon-corner {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  width: 52px;
+  height: 52px;
+  color: var(--rose-deep);
+  pointer-events: none;
 }
 
-@keyframes logoSway {
-  0%, 100% { transform: rotate(-4deg); }
-  50%      { transform: rotate(4deg); }
+@keyframes catBreatheReal {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.035); }
 }
+
+.cat-illustration {
+  transform-box: fill-box;
+  transform-origin: 50% 62%;
+  animation: catBreatheReal 4.4s ease-in-out infinite;
+}
+
+@keyframes earTwitchL {
+  0%, 88%, 100% { transform: rotate(0deg); }
+  92%           { transform: rotate(-7deg); }
+}
+@keyframes earTwitchR {
+  0%, 88%, 100% { transform: rotate(0deg); }
+  92%           { transform: rotate(7deg); }
+}
+
+.cat-ear-left  { transform-box: fill-box; transform-origin: 80% 100%; animation: earTwitchL 6.5s ease-in-out infinite; }
+.cat-ear-right { transform-box: fill-box; transform-origin: 20% 100%; animation: earTwitchR 6.5s ease-in-out infinite 0.4s; }
+
+@keyframes tailSway {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(5deg); }
+}
+
+.cat-tail { transform-box: fill-box; transform-origin: 10% 95%; animation: tailSway 5.2s ease-in-out infinite; }
 
 .site-title {
   font-family: 'Fraunces', serif;
@@ -212,17 +249,6 @@ body {
 
 .cat-card:hover { box-shadow: var(--shadow-card-hover); }
 
-.cat-avatar {
-  font-size: 3.2rem;
-  flex-shrink: 0;
-  animation: catBreathe 4s ease-in-out infinite;
-}
-
-@keyframes catBreathe {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50%      { transform: translateY(-4px) scale(1.04); }
-}
-
 .cat-bubble { flex: 1; }
 
 .cat-text {
@@ -279,12 +305,14 @@ body {
 .calendar-section { margin-bottom: 28px; }
 
 .calendar-card {
+  position: relative;
   background: var(--white);
   border: 1px solid var(--grey-200);
   border-radius: var(--radius-xl);
   padding: 36px 34px;
   box-shadow: var(--shadow-card);
   transition: box-shadow 0.25s;
+  overflow: hidden;
 }
 
 .calendar-card:hover { box-shadow: var(--shadow-card-hover); }
@@ -726,7 +754,7 @@ body {
   color: var(--rose-deep);
 }
 
-.modal-cat { font-size: 2.8rem; text-align: center; margin-bottom: 8px; animation: catBreathe 3s ease-in-out infinite; }
+.modal-cat { display: flex; justify-content: center; }
 
 .modal-title {
   font-family: 'Fraunces', serif;
