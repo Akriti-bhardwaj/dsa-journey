@@ -308,6 +308,7 @@ document.getElementById('btnSaveNote').addEventListener('click', () => {
   }, 2000);
 
   renderCalendar();
+  if (selectedKey === todayKey()) renderTodayNotePreview();
 });
 
 // Cancel note
@@ -407,9 +408,9 @@ function renderTopics() {
 // ─── Confetti ─────────────────────────────────────────────────
 function shootConfetti() {
   const container = document.getElementById('confettiContainer');
-  const colors    = ['#9333ea','#ec4899','#f472b6','#c084fc','#fbbf24','#34d399','#f0abfc'];
+  const colors    = ['#CB7F76','#E3A79E','#D8A24B','#93A985','#EBE2D8'];
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 24; i++) {
     const bit = document.createElement('div');
     bit.className = 'confetti-bit';
 
@@ -437,106 +438,101 @@ function shootConfetti() {
   }
 }
 
-// ─── Custom Cursor & Glitter ──────────────────────────────────
-const cursor      = document.getElementById('cursor');
-const cursorTrail = document.getElementById('cursorTrail');
+// ─── Reminders (Tomorrow's Plan sidebar) ───────────────────────
+const REMINDERS_KEY = 'dsa_reminders_v1';
 
-let cursorX = -100, cursorY = -100;
-let trailX  = -100, trailY  = -100;
-let lastGlitterTime = 0;
+function loadReminders() {
+  try { return JSON.parse(localStorage.getItem(REMINDERS_KEY)) || []; }
+  catch { return []; }
+}
+function saveReminders(list) {
+  try { localStorage.setItem(REMINDERS_KEY, JSON.stringify(list)); } catch {}
+}
 
-const glitterColors = [
-  '#e879f9','#a855f7','#ec4899','#f9a8d4','#c084fc',
-  '#f0abfc','#fbbf24','#34d399','#f472b6','#ffffff',
-];
+let reminders = loadReminders();
 
-const glitterShapes = ['✦','✧','⋆','★','·','∘','◆','♦'];
+function renderReminders() {
+  const list  = document.getElementById('reminderList');
+  const empty = document.getElementById('reminderEmpty');
+  list.innerHTML = '';
 
-function spawnGlitter(x, y) {
-  const now = Date.now();
-  if (now - lastGlitterTime < 25) return;
-  lastGlitterTime = now;
+  if (reminders.length === 0) {
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
 
-  const count = 2 + Math.floor(Math.random() * 2);
-  for (let i = 0; i < count; i++) {
-    const g   = document.createElement('div');
-    g.className = 'glitter';
+  reminders.forEach(item => {
+    const li = document.createElement('li');
+    li.className = 'reminder-item' + (item.done ? ' done' : '');
 
-    const isShape = Math.random() > 0.4;
-    const size    = 4 + Math.random() * 9;
-    const color   = glitterColors[Math.floor(Math.random() * glitterColors.length)];
-    const gx      = (Math.random() - 0.5) * 50 + 'px';
-    const gy      = -(20 + Math.random() * 40) + 'px';
-    const delay   = i * 60;
-    const dur     = 600 + Math.random() * 500;
-    const ox      = (Math.random() - 0.5) * 24;
-    const oy      = (Math.random() - 0.5) * 24;
+    const check = document.createElement('button');
+    check.className = 'reminder-check';
+    check.type = 'button';
+    check.setAttribute('aria-label', item.done ? 'Mark as not done' : 'Mark as done');
+    check.textContent = item.done ? '✓' : '';
+    check.addEventListener('click', () => {
+      item.done = !item.done;
+      saveReminders(reminders);
+      renderReminders();
+    });
 
-    if (isShape) {
-      g.textContent  = glitterShapes[Math.floor(Math.random() * glitterShapes.length)];
-      g.style.cssText = `
-        left:${x + ox}px; top:${y + oy}px;
-        font-size:${size + 4}px; color:${color};
-        --gx:${gx}; --gy:${gy};
-        animation-delay:${delay}ms;
-        animation-duration:${dur}ms;
-        background:none; border-radius:0;
-        line-height:1; display:flex; align-items:center; justify-content:center;
-      `;
-    } else {
-      g.style.cssText = `
-        left:${x + ox}px; top:${y + oy}px;
-        width:${size}px; height:${size}px;
-        background:${color};
-        --gx:${gx}; --gy:${gy};
-        animation-delay:${delay}ms;
-        animation-duration:${dur}ms;
-      `;
-    }
-    document.body.appendChild(g);
-    setTimeout(() => g.remove(), dur + delay + 100);
+    const text = document.createElement('span');
+    text.className = 'reminder-text';
+    text.textContent = item.text;
+
+    const del = document.createElement('button');
+    del.className = 'reminder-delete';
+    del.type = 'button';
+    del.setAttribute('aria-label', 'Delete reminder');
+    del.textContent = '✕';
+    del.addEventListener('click', () => {
+      reminders = reminders.filter(r => r.id !== item.id);
+      saveReminders(reminders);
+      renderReminders();
+    });
+
+    li.appendChild(check);
+    li.appendChild(text);
+    li.appendChild(del);
+    list.appendChild(li);
+  });
+}
+
+document.getElementById('reminderForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('reminderInput');
+  const text  = input.value.trim();
+  if (!text) return;
+
+  reminders.push({ id: Date.now() + Math.random(), text, done: false });
+  saveReminders(reminders);
+  input.value = '';
+  renderReminders();
+});
+
+// Tomorrow's date label
+(function setTomorrowLabel() {
+  const t = new Date(now);
+  t.setDate(t.getDate() + 1);
+  const label = `${DAYS[t.getDay()]}, ${MONTHS[t.getMonth()]} ${t.getDate()}`;
+  document.getElementById('tomorrowDateLabel').textContent = label;
+})();
+
+// Today's note preview in sidebar
+function renderTodayNotePreview() {
+  const entry = data[todayKey()] || {};
+  const preview = document.getElementById('todayNotePreview');
+  if (entry.note && entry.note.trim()) {
+    preview.textContent = entry.note;
+  } else {
+    preview.textContent = 'No note added for today yet. Tap today on the calendar to add one.';
   }
 }
-
-document.addEventListener('mousemove', e => {
-  cursorX = e.clientX;
-  cursorY = e.clientY;
-  cursor.style.left = cursorX + 'px';
-  cursor.style.top  = cursorY + 'px';
-  spawnGlitter(cursorX, cursorY);
-});
-
-// Smooth trail
-function animateTrail() {
-  trailX += (cursorX - trailX) * 0.2;
-  trailY += (cursorY - trailY) * 0.2;
-  cursorTrail.style.left = trailX + 'px';
-  cursorTrail.style.top  = trailY + 'px';
-  requestAnimationFrame(animateTrail);
-}
-animateTrail();
-
-// Hover effect on interactive elements
-document.querySelectorAll('button, .day-cell, .topic-pill, a').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-});
-
-// Dynamic hover — since day cells are re-rendered
-document.getElementById('daysGrid').addEventListener('mouseover', e => {
-  if (e.target.closest('.day-cell')) cursor.classList.add('hovering');
-});
-document.getElementById('daysGrid').addEventListener('mouseout', () => {
-  cursor.classList.remove('hovering');
-});
-document.getElementById('topicsGrid').addEventListener('mouseover', e => {
-  if (e.target.closest('.topic-pill')) cursor.classList.add('hovering');
-});
-document.getElementById('topicsGrid').addEventListener('mouseout', () => {
-  cursor.classList.remove('hovering');
-});
 
 // ─── Init ─────────────────────────────────────────────────────
 renderCalendar();
 renderTopics();
 updateStats();
+renderReminders();
+renderTodayNotePreview();
