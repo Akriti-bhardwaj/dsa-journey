@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSA Journey — Daily C++ Tracker</title>
   <meta name="description" content="Track your daily DSA practice with this beautiful calendar. Stay consistent, stay motivated!" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='52' cy='46' r='25' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5'/><path d='M31 30 L25 9 L45 24 Z' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5' stroke-linejoin='round'/><path d='M73 30 L79 9 L59 24 Z' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5' stroke-linejoin='round'/><ellipse cx='43' cy='46' rx='3' ry='4' fill='%23322D2A'/><ellipse cx='61' cy='46' rx='3' ry='4' fill='%23322D2A'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -25,7 +25,24 @@
     <header class="site-header">
       <div class="header-inner">
         <div class="logo-area">
-          <span class="logo-icon">🐱</span>
+          <span class="logo-icon cat-icon cat-icon-logo" aria-hidden="true">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
+              <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+              <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
+              <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
+              <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+              <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+              <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+              <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+              <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+              <g class="cat-whiskers" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <line x1="19" y1="48" x2="35" y2="46"/>
+                <line x1="19" y1="56" x2="35" y2="53"/>
+                <line x1="85" y1="48" x2="69" y2="46"/>
+                <line x1="85" y1="56" x2="69" y2="53"/>
+              </g>
+            </svg>
+          </span>
           <div>
             <h1 class="site-title">DSA Journey</h1>
             <p class="site-sub">Your daily C++ grind tracker</p>
@@ -44,9 +61,26 @@
 
         <!-- Cat motivation card -->
         <section class="cat-card" id="catCard">
-          <div class="cat-avatar" id="catAvatar">🐱</div>
+          <div class="cat-avatar cat-icon cat-icon-hero" id="catAvatar" aria-hidden="true">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
+              <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+              <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
+              <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
+              <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+              <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+              <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+              <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+              <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+              <g class="cat-whiskers" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <line x1="19" y1="48" x2="35" y2="46"/>
+                <line x1="19" y1="56" x2="35" y2="53"/>
+                <line x1="85" y1="48" x2="69" y2="46"/>
+                <line x1="85" y1="56" x2="69" y2="53"/>
+              </g>
+            </svg>
+          </div>
           <div class="cat-bubble">
-            <p class="cat-text" id="catText"> Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you! 💗</p>
+            <p class="cat-text" id="catText">Meow! Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you! 💗</p>
           </div>
         </section>
 
@@ -77,6 +111,18 @@
         <!-- Calendar -->
         <section class="calendar-section">
           <div class="calendar-card">
+            <div class="calendar-cat cat-icon cat-icon-corner" aria-hidden="true">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
+                <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5"/>
+                <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5"/>
+                <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+                <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+                <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+                <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+                <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+              </svg>
+            </div>
             <div class="calendar-header">
               <button class="nav-btn" id="prevBtn" aria-label="Previous month">&#8249;</button>
               <div class="month-year" id="monthLabel">June 2025</div>
@@ -146,7 +192,18 @@
   <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Day check-in">
     <div class="modal-box">
       <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-      <div class="modal-cat" id="modalCat">🐱</div>
+      <div class="modal-cat cat-icon cat-icon-modal" id="modalCat" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
+          <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
+          <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
+          <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+          <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+          <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+          <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
+          <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+        </svg>
+      </div>
       <h2 class="modal-title" id="modalTitle">Check in for today</h2>
       <p class="modal-date" id="modalDate"></p>
 
