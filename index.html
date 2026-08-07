@@ -49,8 +49,14 @@
           </div>
         </div>
         <div class="header-badges">
-          <div class="badge badge-streak" id="headerStreak">🔥 0 day streak</div>
-          <div class="badge badge-total" id="headerTotal">✅ 0 days done</div>
+          <div class="badge badge-streak" id="headerStreak">
+            <span class="badge-icon icon-flame" id="headerFlameIcon"></span>
+            <span><span id="headerStreakNum">0</span> day streak</span>
+          </div>
+          <div class="badge badge-total" id="headerTotal">
+            <span class="badge-icon" id="headerCheckIcon"></span>
+            <span><span id="headerTotalNum">0</span> days done</span>
+          </div>
         </div>
       </div>
     </header>
@@ -80,30 +86,35 @@
             </svg>
           </div>
           <div class="cat-bubble">
-            <p class="cat-text" id="catText">Meow! Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you! 💗</p>
+            <p class="cat-text" id="catText">Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you.</p>
           </div>
         </section>
 
         <!-- Stats row -->
         <section class="stats-row">
-          <div class="stat-card">
-            <div class="stat-icon">🔥</div>
+          <div class="stat-card stat-card-streak">
+            <div class="stat-icon" id="iconStreak"></div>
             <div class="stat-value" id="statStreak">0</div>
             <div class="stat-label">Day Streak</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon">✅</div>
+            <div class="stat-icon" id="iconTotal"></div>
             <div class="stat-value" id="statTotal">0</div>
             <div class="stat-label">Total Days</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon">📅</div>
+            <div class="stat-icon" id="iconMonth"></div>
             <div class="stat-value" id="statMonth">0</div>
             <div class="stat-label">This Month</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon">💪</div>
-            <div class="stat-value" id="statPct">0%</div>
+          <div class="stat-card stat-card-ring">
+            <div class="ring-wrap">
+              <svg class="ring-svg" viewBox="0 0 60 60">
+                <circle class="ring-track" cx="30" cy="30" r="25"/>
+                <circle class="ring-fill" id="consistencyRing" cx="30" cy="30" r="25"/>
+              </svg>
+              <div class="stat-value ring-value" id="statPct">0%</div>
+            </div>
             <div class="stat-label">Consistency</div>
           </div>
         </section>
@@ -154,7 +165,7 @@
       <aside class="sidebar">
         <div class="sidebar-card reminders-card">
           <div class="sidebar-card-head">
-            <h2 class="sidebar-title">📌 Tomorrow's Plan</h2>
+            <h2 class="sidebar-title"><span class="title-icon" id="iconPin"></span>Tomorrow's Plan</h2>
             <p class="sidebar-sub" id="tomorrowDateLabel">What to tackle next</p>
           </div>
 
@@ -175,7 +186,7 @@
         </div>
 
         <div class="sidebar-card note-mini-card">
-          <h2 class="sidebar-title">📝 Today's Note</h2>
+          <h2 class="sidebar-title"><span class="title-icon" id="iconNoteTitle"></span>Today's Note</h2>
           <p class="sidebar-sub" id="todayNotePreviewSub">From today's check-in</p>
           <p class="today-note-preview" id="todayNotePreview">No note added for today yet. Tap today on the calendar to add one.</p>
         </div>
@@ -191,7 +202,7 @@
   <!-- Day Modal -->
   <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Day check-in">
     <div class="modal-box">
-      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <button class="modal-close" id="modalClose" aria-label="Close"></button>
       <div class="modal-cat cat-icon cat-icon-modal" id="modalCat" aria-hidden="true">
         <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
           <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
@@ -210,7 +221,7 @@
       <!-- Toggle check-in -->
       <div class="checkin-area">
         <button class="checkin-btn" id="checkinBtn">
-          <span class="checkin-icon" id="checkinIcon">☐</span>
+          <span class="checkin-icon" id="checkinIcon"></span>
           <span id="checkinLabel">Mark DSA Done</span>
         </button>
       </div>
@@ -218,7 +229,7 @@
       <!-- Note area -->
       <div class="note-area">
         <div class="note-toggle-row">
-          <span class="note-label">📝 Add a note about today's topics?</span>
+          <span class="note-label"><span class="title-icon" id="iconNoteLabel"></span>Add a note about today's topics?</span>
           <button class="note-toggle-btn" id="noteToggleBtn">Add Note</button>
         </div>
         <div class="note-input-wrap" id="noteInputWrap" style="display:none;">
