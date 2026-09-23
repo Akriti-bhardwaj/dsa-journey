@@ -728,6 +728,68 @@ function mountStaticIcons() {
   document.getElementById('modalClose').innerHTML = svgIcon('x');
 }
 
+// ─── Corner pet mascot ──────────────────────────────────────────
+const PET_HIDDEN_KEY = 'dsa_pet_hidden_v1';
+
+function isNightTime(d = new Date()) {
+  const h = d.getHours();
+  return h >= 21 || h < 6; // sleeps 9pm–6am
+}
+
+function initPetMascot() {
+  const mascot = document.getElementById('petMascot');
+  const hideBtn = document.getElementById('petHideBtn');
+  const peek = document.getElementById('petPeek');
+  if (!mascot || !hideBtn || !peek) return;
+
+  function applySleepState() {
+    mascot.classList.toggle('sleeping', isNightTime());
+  }
+  applySleepState();
+  setInterval(applySleepState, 5 * 60 * 1000); // recheck day/night every 5 min
+
+  // Hide / show, remembered across visits
+  function setHidden(hidden) {
+    mascot.classList.toggle('pet-hidden', hidden);
+    peek.classList.toggle('visible', hidden);
+    try { localStorage.setItem(PET_HIDDEN_KEY, hidden ? '1' : '0'); } catch {}
+  }
+  setHidden(localStorage.getItem(PET_HIDDEN_KEY) === '1');
+
+  hideBtn.addEventListener('click', (e) => { e.stopPropagation(); setHidden(true); });
+  peek.addEventListener('click', () => setHidden(false));
+
+  // Tap the cat for a little pounce reaction (only while awake)
+  document.getElementById('petSvg').addEventListener('click', () => {
+    if (mascot.classList.contains('sleeping')) return;
+    mascot.classList.remove('pounce');
+    void mascot.offsetWidth;
+    mascot.classList.add('pounce');
+  });
+
+  // Occasional idle gestures — blink, lick a paw, or stretch
+  const GESTURES = ['blink', 'licking', 'stretching'];
+  function scheduleGesture() {
+    const delay = 4000 + Math.random() * 6000;
+    setTimeout(() => {
+      if (!mascot.classList.contains('sleeping') && !mascot.classList.contains('pet-hidden')) {
+        const g = GESTURES[Math.floor(Math.random() * GESTURES.length)];
+        if (g === 'blink') {
+          mascot.classList.add('blinking');
+          setTimeout(() => mascot.classList.remove('blinking'), 160);
+        } else {
+          mascot.classList.add(g);
+          const svg = document.getElementById('petSvg');
+          const clear = () => { mascot.classList.remove(g); svg.removeEventListener('animationend', clear); };
+          svg.addEventListener('animationend', clear);
+        }
+      }
+      scheduleGesture();
+    }, delay);
+  }
+  scheduleGesture();
+}
+
 // ─── Init ─────────────────────────────────────────────────────
 mountStaticIcons();
 initRing();
@@ -736,3 +798,4 @@ renderTopics();
 updateStats();
 renderReminders();
 renderTodayNotePreview();
+initPetMascot();
