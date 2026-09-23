@@ -244,22 +244,26 @@ function renderCalendar(direction) {
     const isPast    = cellDate < new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const isFuture  = !isToday && !isPast;
     const isDone    = !!entry.done;
+    const isOther   = !!entry.other;
+    const isBoth    = isDone && isOther;
     const hasNote   = !!(entry.note && entry.note.trim());
 
     const el = document.createElement('div');
 
     let classes = 'day-cell day-enter';
-    if (isDone)           classes += ' done';
-    else if (isFuture)    classes += ' normal future';
-    else if (isPast)      classes += ' missed';
-    else                  classes += ' normal';
+    if (isBoth)            classes += ' both';
+    else if (isDone)       classes += ' done';
+    else if (isOther)      classes += ' other-only';
+    else if (isFuture)     classes += ' normal future';
+    else if (isPast)       classes += ' missed';
+    else                   classes += ' normal';
     if (isToday)          classes += ' today-cell';
     if (hasNote)          classes += ' has-note';
     el.className = classes;
     el.style.animationDelay = (dayIndex * 12) + 'ms';
     dayIndex++;
 
-    if (isDone) {
+    if (isDone || isOther) {
       el.innerHTML = `<span class="day-tick">${svgIcon('checkCircle')}</span><span class="day-num">${d}</span>`;
     } else {
       el.innerHTML = `<span class="day-num">${d}</span>`;
@@ -311,6 +315,21 @@ function openModal(day, key) {
     label.textContent = 'Mark DSA Done';
   }
 
+  // Other-productive button
+  const isOther   = !!entry.other;
+  const otherBtn   = document.getElementById('otherBtn');
+  const otherIcon  = document.getElementById('otherIcon');
+  const otherLabel = document.getElementById('otherLabel');
+  if (isOther) {
+    otherBtn.classList.add('checked');
+    otherIcon.innerHTML  = svgIcon('checkSquare');
+    otherLabel.textContent = 'Other Study Done! (click to undo)';
+  } else {
+    otherBtn.classList.remove('checked');
+    otherIcon.innerHTML  = svgIcon('square');
+    otherLabel.textContent = 'Mark Other Study Done';
+  }
+
   // Note display
   const toggleBtn  = document.getElementById('noteToggleBtn');
   const inputWrap  = document.getElementById('noteInputWrap');
@@ -360,12 +379,50 @@ document.getElementById('checkinBtn').addEventListener('click', () => {
     btn.classList.add('checked');
     icon.innerHTML  = svgIcon('checkSquare');
     label.textContent = 'DSA Done! (click to undo)';
-    document.getElementById('modalFooterMsg').textContent = 'Amazing! Keep it up.';
+    document.getElementById('modalFooterMsg').textContent = data[selectedKey].other
+      ? "Dual win today — DSA and coursework both done!"
+      : 'Amazing! Keep it up.';
     shootConfetti();
   } else {
     btn.classList.remove('checked');
     icon.innerHTML  = svgIcon('square');
     label.textContent = 'Mark DSA Done';
+    document.getElementById('modalFooterMsg').textContent = '';
+  }
+
+  renderCalendar();
+  updateStats();
+});
+
+// Other-productive toggle (e.g. coursework, academic study — anything non-DSA)
+document.getElementById('otherBtn').addEventListener('click', () => {
+  if (!selectedKey) return;
+  const entry  = data[selectedKey] || {};
+  const isOther = !!entry.other;
+  const newVal  = !isOther;
+
+  data[selectedKey] = { ...entry, other: newVal };
+  saveData(data);
+
+  const btn   = document.getElementById('otherBtn');
+  const icon  = document.getElementById('otherIcon');
+  const label = document.getElementById('otherLabel');
+
+  btn.classList.add('pop');
+  setTimeout(() => btn.classList.remove('pop'), 260);
+
+  if (newVal) {
+    btn.classList.add('checked');
+    icon.innerHTML  = svgIcon('checkSquare');
+    label.textContent = 'Other Study Done! (click to undo)';
+    document.getElementById('modalFooterMsg').textContent = data[selectedKey].done
+      ? "Dual win today — DSA and coursework both done!"
+      : 'Good — every bit of study counts.';
+    if (data[selectedKey].done) shootConfetti();
+  } else {
+    btn.classList.remove('checked');
+    icon.innerHTML  = svgIcon('square');
+    label.textContent = 'Mark Other Study Done';
     document.getElementById('modalFooterMsg').textContent = '';
   }
 
