@@ -759,7 +759,7 @@ function initPetMascot() {
   hideBtn.addEventListener('click', (e) => { e.stopPropagation(); setHidden(true); });
   peek.addEventListener('click', () => setHidden(false));
 
-  // Tap the cat for a little pounce reaction (only while awake)
+  // Tap the cat for a little content purr reaction (only while awake)
   document.getElementById('petSvg').addEventListener('click', () => {
     if (mascot.classList.contains('sleeping')) return;
     mascot.classList.remove('pounce');
