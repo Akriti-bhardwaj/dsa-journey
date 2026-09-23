@@ -1,119 +1,99 @@
-# 🐱 DSA Journey — Daily C++ Tracker
+# DSA Journey
 
-A beautiful, lively calendar website to track your daily DSA practice with glitter cursors, motivational cat, streaks, and topic notes!
+A lightweight web-based tracker for maintaining consistency in Data Structures and Algorithms (DSA) practice.
 
-## 🌐 Live Demo
+The application provides a calendar-based interface for logging daily DSA practice, tracking study streaks, recording topic progress, and maintaining daily notes.
 
-> **👉 [https://akriti-bhardwaj.github.io/dsa-journey/](https://akriti-bhardwaj.github.io/dsa-journey/)**
-
-Hosted on GitHub Pages — available 24/7 from anywhere in the world! 🚀
+**Live Demo:**  
+https://akriti-bhardwaj.github.io/dsa-journey/
 
 ---
 
-## 📁 Project Structure
+## Overview
 
-```
+DSA Journey was developed as a personal productivity tool to make daily DSA practice easier to track and maintain consistently.
+
+Users can:
+
+- Log daily DSA practice
+- Track other academic/study activities
+- Record topics covered
+- Add notes for individual days
+- Monitor practice streaks
+- View monthly activity
+- Track overall consistency
+- Mark completed DSA topics
+
+The application is completely client-side and uses the browser's `localStorage` API for data persistence.
+
+---
+
+## Features
+
+### Practice Tracking
+
+- Mark individual days as DSA completed
+- Track non-DSA academic activities separately
+- Record both DSA and other study activities on the same day
+- Navigate between different months
+- Update or undo daily activity status
+
+### Progress Tracking
+
+- Current practice streak
+- Total DSA practice days
+- Monthly activity
+- Overall consistency percentage
+- Calendar-based progress visualization
+
+### Daily Notes
+
+Users can add notes to individual dates to record:
+
+- Problems solved
+- Concepts studied
+- Topics revised
+- Additional observations
+
+### Topic Tracker
+
+The application includes a predefined list of C++ DSA topics that can be marked as completed.
+
+This provides a simple way to monitor progress across different areas of DSA.
+
+### User Interface
+
+- Responsive calendar interface
+- Visual indicators for different study activities
+- Animated motivational elements
+- Interactive corner companion
+- Cursor effects
+- Completion feedback and animations
+
+---
+
+## Technology Stack
+
+| Technology | Purpose |
+|------------|---------|
+| HTML5 | Application structure |
+| CSS3 | Styling, layout and animations |
+| JavaScript | Application logic and state management |
+| SVG | Interactive visual elements |
+| LocalStorage API | Client-side data persistence |
+| GitHub Pages | Deployment |
+
+The project does not require a frontend framework or backend server.
+
+---
+
+## Project Structure
+
+```text
 dsa-journey/
-├── index.html        ← Main page
-├── style.css         ← All styles
-├── app.js            ← All logic
-├── .nojekyll         ← GitHub Pages config
-└── README.md
-```
-
----
-
-## 🚀 Option 1 — Run Locally (VS Code)
-
-1. Open the `dsa-journey/` folder in VS Code
-2. Install the **Live Server** extension (by Ritwick Dey) from the Extensions panel
-3. Right-click `index.html` → **"Open with Live Server"**
-4. Site opens at `http://127.0.0.1:5500` 🎉
-
----
-
-## 🌐 Option 2 — Deploy FREE on GitHub Pages (others can use it!)
-
-### Step 1 — Create a GitHub repo
-1. Go to [github.com](https://github.com) → New repository
-2. Name it `dsa-journey` (or anything you like)
-3. Set it to **Public**
-4. Click **Create repository**
-
-### Step 2 — Push your code
-In the `dsa-journey/` folder, open a terminal:
-
-```bash
-git init
-git add .
-git commit -m "🐱 Initial DSA Journey site"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/dsa-journey.git
-git push -u origin main
-```
-
-### Step 3 — Enable GitHub Pages
-1. Go to your repo on GitHub
-2. Click **Settings** → **Pages** (left sidebar)
-3. Under **Source**, select `main` branch → `/ (root)`
-4. Click **Save**
-
-Your site will be live at:
-**`https://YOUR_USERNAME.github.io/dsa-journey/`** 🎉
-
-> 💡 This project is already deployed at: **[https://akriti-bhardwaj.github.io/dsa-journey/](https://akriti-bhardwaj.github.io/dsa-journey/)**
-
-Share this link with anyone! They'll each get their own localStorage data.
-
----
-
-## 🌐 Option 3 — Deploy on Netlify (instant, no config)
-
-1. Go to [netlify.com](https://netlify.com) → Sign up free
-2. Drag & drop the entire `dsa-journey/` folder onto the Netlify dashboard
-3. Get an instant URL like `https://random-name.netlify.app`
-4. (Optional) Connect your GitHub repo for auto-deploy on push
-
----
-
-## 🌐 Option 4 — Deploy on Vercel
-
-1. Go to [vercel.com](https://vercel.com) → Sign up free with GitHub
-2. Click **New Project** → Import your `dsa-journey` repo
-3. Framework: **Other** (plain HTML)
-4. Click **Deploy** → Get your URL instantly!
-
----
-
-## ✨ Features
-
-- 📅 **Month calendar** — navigate past & future months
-- ✅ **Check-in toggle** — click any day to mark DSA done/undone
-- 📝 **Daily notes** — optionally add what topics you covered
-- 🔥 **Streak counter** — tracks consecutive days
-- 📊 **Stats bar** — streak, total days, this month, consistency %
-- 🐱 **Motivational cat** — changes message based on your streak
-- ✨ **Glitter cursor** — sparkles follow your mouse everywhere
-- 📚 **Topic tracker** — 22 C++ DSA topics to mark as covered
-- 💾 **Auto-saves** — all data in localStorage (per browser)
-- 🎊 **Confetti** — shoots when you mark a day done!
-
----
-
-## 💡 Tips
-
-- Data is saved per-browser using `localStorage` — different users get their own data automatically
-- The 📝 emoji on calendar cells shows days that have notes
-- You can log past days too — just navigate to that month and click
-- Topics you mark stay saved across sessions
-
----
-
-## 🎨 Customization
-
-Want to change the color scheme or cat messages? Open `app.js` and edit:
-- `catPool` array — change the motivational messages
-- `TOPICS` array — add/remove DSA topics
-- `style.css` `:root` section — tweak colors
-
-Happy coding! 💜 Keep showing up every day!
+│
+├── index.html        # Main application page
+├── style.css         # Styling and animations
+├── app.js            # Application logic
+├── .nojekyll         # GitHub Pages configuration
+└── README.md         # Project documentation
