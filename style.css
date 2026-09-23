@@ -420,6 +420,32 @@ body {
   box-shadow: 0 8px 22px rgba(203, 127, 118, 0.45);
 }
 
+/* Other-productive day (coursework/academics — no DSA) */
+.day-cell.other-only {
+  background: var(--sage-deep);
+  border-color: var(--sage-deep);
+  color: white;
+  box-shadow: 0 4px 14px rgba(113, 135, 96, 0.35);
+}
+
+.day-cell.other-only:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(113, 135, 96, 0.45);
+}
+
+/* Both DSA and other productive work done the same day */
+.day-cell.both {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: white;
+  box-shadow: 0 4px 14px rgba(216, 162, 75, 0.4);
+}
+
+.day-cell.both:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(216, 162, 75, 0.5);
+}
+
 .day-cell.today-cell {
   border-color: var(--sage-deep) !important;
   box-shadow: 0 0 0 3px rgba(147, 169, 133, 0.18);
@@ -448,6 +474,12 @@ body {
   background: var(--gold);
 }
 
+.day-cell.done.has-note::after,
+.day-cell.other-only.has-note::after,
+.day-cell.both.has-note::after {
+  background: white;
+}
+
 .day-num { font-size: 0.9rem; line-height: 1; }
 .day-tick { font-size: 1rem; line-height: 1; }
 
@@ -471,6 +503,8 @@ body {
 }
 
 .done-dot { background: var(--rose-deep); }
+.other-dot { background: var(--sage-deep); }
+.both-dot { background: var(--gold); }
 .today-dot { background: transparent; border: 2px solid var(--sage-deep); }
 .missed-dot { background: var(--cream); border: 1.5px solid var(--grey-200); }
 
@@ -773,7 +807,7 @@ body {
   margin-bottom: 22px;
 }
 
-.checkin-area { margin-bottom: 20px; }
+.checkin-area { margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
 
 .checkin-btn {
   width: 100%;
@@ -798,6 +832,18 @@ body {
 .checkin-btn.checked {
   background: var(--rose-deep);
   border-color: var(--rose-deep);
+  color: white;
+}
+
+/* Second button: any non-DSA productive study (coursework, academics, etc.) */
+.checkin-btn-other:hover {
+  border-color: var(--sage-deep);
+  background: #F1F5EC;
+}
+
+.checkin-btn-other.checked {
+  background: var(--sage-deep);
+  border-color: var(--sage-deep);
   color: white;
 }
 
