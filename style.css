@@ -1185,3 +1185,191 @@ body {
   padding-top: 0; padding-bottom: 0;
   margin: 0;
 }
+
+/* ===== CORNER PET MASCOT ===== */
+.pet-mascot {
+  position: fixed;
+  left: 10px;
+  bottom: 0;
+  width: 96px;
+  height: 82px;
+  z-index: 60;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.pet-mascot.pet-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+  visibility: hidden;
+}
+
+.pet-hide-btn {
+  position: absolute;
+  top: 0px; right: 4px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--grey-200);
+  background: var(--cream);
+  color: var(--grey-500);
+  font-size: 13px;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 0.2s, background 0.2s, color 0.2s;
+  z-index: 2;
+}
+
+.pet-mascot:hover .pet-hide-btn { opacity: 1; }
+.pet-hide-btn:hover { background: var(--rose-pale); color: var(--rose-deep); }
+
+.pet-zzz {
+  position: absolute;
+  top: -2px; right: 14px;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  color: var(--grey-500);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.pet-mascot.sleeping .pet-zzz { opacity: 1; }
+
+.pet-zzz span {
+  display: inline-block;
+  font-size: 0.85rem;
+  opacity: 0;
+  animation: petZzzFloat 2.4s ease-in infinite;
+}
+.pet-zzz span:nth-child(2) { font-size: 0.7rem; animation-delay: 0.5s; }
+.pet-zzz span:nth-child(3) { font-size: 0.58rem; animation-delay: 1s; }
+
+@keyframes petZzzFloat {
+  0%   { opacity: 0; transform: translateY(4px); }
+  25%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-15px); }
+}
+
+.pet-svg {
+  width: 100%;
+  height: 100%;
+  color: var(--rose-deep);
+  cursor: pointer;
+  pointer-events: auto;
+  overflow: visible;
+  animation: petBreathe 3.6s ease-in-out infinite;
+}
+
+@keyframes petBreathe {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+
+.pet-mascot.sleeping .pet-svg {
+  color: var(--grey-500);
+  animation: petBreatheSlow 4.6s ease-in-out infinite;
+}
+
+@keyframes petBreatheSlow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1px); }
+}
+
+.pet-eyes-open, .pet-eyes-closed { transition: opacity 0.08s; }
+.pet-eyes-closed { opacity: 0; }
+
+.pet-mascot.sleeping .pet-eyes-open,
+.pet-mascot.blinking .pet-eyes-open { opacity: 0; }
+
+.pet-mascot.sleeping .pet-eyes-closed,
+.pet-mascot.blinking .pet-eyes-closed { opacity: 1; }
+
+.pet-tail {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: petTailSwish 3s ease-in-out infinite;
+}
+
+@keyframes petTailSwish {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-9deg); }
+}
+
+.pet-mascot.sleeping .pet-tail {
+  animation: none;
+  transform: rotate(10deg);
+}
+
+.pet-paw-group {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.pet-mascot.licking .pet-paw-group {
+  animation: petLickPaw 1.4s ease-in-out;
+}
+
+@keyframes petLickPaw {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  30%      { transform: rotate(-58deg) translateY(-9px); }
+  50%      { transform: rotate(-66deg) translateY(-10px); }
+  70%      { transform: rotate(-58deg) translateY(-9px); }
+}
+
+.pet-mascot.sleeping .pet-paw-group { animation: none; }
+
+.pet-mascot.stretching .pet-svg {
+  animation: petStretch 1.6s ease-in-out;
+}
+
+@keyframes petStretch {
+  0%, 100% { transform: scaleX(1) translateY(0); }
+  50%      { transform: scaleX(1.08) translateY(2px); }
+}
+
+.pet-mascot.pounce .pet-svg {
+  animation: petPounce 0.5s var(--ease-spring);
+}
+
+@keyframes petPounce {
+  0%   { transform: translateY(0) scale(1); }
+  35%  { transform: translateY(-9px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.pet-peek {
+  position: fixed;
+  left: 0;
+  bottom: 14px;
+  width: 24px; height: 30px;
+  border-radius: 0 16px 16px 0;
+  border: 1.5px solid var(--rose);
+  border-left: none;
+  background: var(--rose-pale);
+  cursor: pointer;
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 60;
+  padding: 0;
+}
+
+.pet-peek::before, .pet-peek::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  width: 7px; height: 7px;
+  background: var(--rose-deep);
+  border-radius: 50% 50% 0 50%;
+  transform: rotate(45deg);
+}
+.pet-peek::before { left: 4px; }
+.pet-peek::after  { left: 11px; }
+
+.pet-peek.visible { display: flex; }
+
+@media (max-width: 640px) {
+  .pet-mascot { width: 74px; height: 64px; left: 6px; }
+}
