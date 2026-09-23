@@ -263,6 +263,39 @@
   <!-- Confetti container -->
   <div id="confettiContainer"></div>
 
+  <!-- Corner pet mascot -->
+  <div class="pet-mascot" id="petMascot" aria-hidden="true">
+    <button class="pet-hide-btn" id="petHideBtn" aria-label="Hide pet" title="Hide">&times;</button>
+    <div class="pet-zzz" id="petZzz"><span>Z</span><span>Z</span><span>Z</span></div>
+    <svg viewBox="0 0 100 80" class="pet-svg" id="petSvg" xmlns="http://www.w3.org/2000/svg">
+      <path class="pet-tail" d="M76 58 Q94 54 91 36 Q89 25 78 28" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      <ellipse class="pet-body" cx="44" cy="57" rx="25" ry="17" fill="currentColor" opacity="0.09" stroke="currentColor" stroke-width="4"/>
+      <ellipse class="pet-back-paw" cx="28" cy="70" rx="7" ry="4.5" fill="currentColor" opacity="0.09" stroke="currentColor" stroke-width="3.5"/>
+      <circle class="pet-head" cx="37" cy="33" r="19" fill="currentColor" opacity="0.09" stroke="currentColor" stroke-width="4"/>
+      <path class="pet-ear pet-ear-left" d="M22 21 L18 6 L33 16 Z" fill="currentColor" opacity="0.09" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      <path class="pet-ear pet-ear-right" d="M52 21 L58 6 L43 16 Z" fill="currentColor" opacity="0.09" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      <g class="pet-whiskers" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.45">
+        <line x1="18" y1="35" x2="6" y2="33"/>
+        <line x1="18" y1="39" x2="6" y2="40"/>
+        <line x1="56" y1="35" x2="68" y2="33"/>
+        <line x1="56" y1="39" x2="68" y2="40"/>
+      </g>
+      <g class="pet-eyes-open">
+        <ellipse cx="30" cy="33" rx="2.1" ry="2.9" fill="currentColor"/>
+        <ellipse cx="44" cy="33" rx="2.1" ry="2.9" fill="currentColor"/>
+      </g>
+      <g class="pet-eyes-closed">
+        <path d="M27 33 q3 2.3 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M41 33 q3 2.3 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <path class="pet-nose" d="M35 39 L39 39 L37 42 Z" fill="currentColor"/>
+      <g class="pet-paw-group">
+        <path class="pet-paw" d="M49 60 Q55 60 55 53 L55 47" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+  <button class="pet-peek" id="petPeek" aria-label="Show pet" title="Show pet"></button>
+
   <script src="app.js"></script>
 </body>
 </html>
