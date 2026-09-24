@@ -756,7 +756,9 @@ body {
   border: 1px solid var(--grey-200);
   border-radius: var(--radius-xl);
   padding: 32px 28px 28px;
-  max-width: 420px;
+  max-width: 600px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
   width: 100%;
   position: relative;
   box-shadow: 0 24px 60px rgba(50, 45, 42, 0.18);
@@ -1404,3 +1406,480 @@ body {
 @media (max-width: 640px) {
   .pet-mascot { width: 74px; height: 64px; left: 6px; }
 }
+
+/* ===== TOPICS PROGRESS ===== */
+.topics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.topics-header > div:first-child {
+  flex: 1;
+}
+.topics-header .section-title {
+  margin-bottom: 4px;
+}
+.topics-progress {
+  text-align: right;
+  min-width: 180px;
+}
+.topics-progress span {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--grey-700);
+  margin-bottom: 6px;
+}
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--grey-300);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--rose-deep);
+  width: 0%;
+  transition: width 0.5s var(--ease-spring);
+}
+
+/* ===== SETTINGS BUTTON ===== */
+.settings-btn {
+  background: none;
+  border: none;
+  color: var(--grey-500);
+  cursor: pointer;
+  padding: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+.settings-btn .icon {
+  width: 22px;
+  height: 22px;
+}
+.settings-btn:hover {
+  background: rgba(89, 82, 77, 0.08);
+  color: var(--grey-900);
+  transform: rotate(45deg);
+}
+
+/* ============================================================
+   TIER 1 — DAILY STUDY DETAILS & MODAL RE-STYLE
+   ============================================================ */
+
+.day-details-card {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--grey-200);
+}
+
+.day-details-head {
+  margin-bottom: 16px;
+}
+
+.day-details-head h3 {
+  margin: 0 0 4px;
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  color: var(--grey-900);
+}
+
+.day-details-head p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--grey-500);
+  font-weight: 600;
+}
+
+/* Metric Cards */
+.day-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.day-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-metric > span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--grey-600);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.metric-input-wrap {
+  display: flex;
+  align-items: baseline;
+  background: var(--cream);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.metric-input-wrap:focus-within {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px var(--rose-pale);
+  background: var(--white);
+}
+
+.metric-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--grey-900);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  padding: 0;
+}
+
+.metric-input-wrap input::-webkit-inner-spin-button,
+.metric-input-wrap input::-webkit-outer-spin-button {
+  margin: 0;
+}
+
+.metric-input-wrap > span {
+  flex-shrink: 0;
+  color: var(--grey-500);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+/* Topics Practiced */
+.day-topic-section {
+  margin-bottom: 24px;
+}
+
+.day-topic-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.day-topic-heading > span:first-child {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--grey-900);
+  font-weight: 800;
+}
+
+.day-topic-heading > span:last-child {
+  font-size: 0.75rem;
+  color: var(--rose-deep);
+  font-weight: 800;
+  background: var(--rose-pale);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.day-topic-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Redesigned Topic Pills */
+.day-topic-chip {
+  appearance: none;
+  background: var(--cream);
+  border: 1px solid var(--grey-200);
+  color: var(--grey-600);
+  border-radius: 999px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: normal;
+  text-align: left;
+}
+
+.day-topic-chip:hover {
+  border-color: var(--grey-400);
+  color: var(--grey-900);
+}
+
+.day-topic-chip.selected {
+  background: var(--rose-pale);
+  border-color: var(--rose);
+  color: var(--rose-deep);
+  font-weight: 800;
+}
+
+.day-topic-chip:active {
+  transform: scale(0.96);
+}
+
+.day-topic-chip .topic-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.day-topic-chip.selected .topic-icon {
+  opacity: 1;
+}
+
+/* Save Details Actions */
+.day-details-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px 0 32px;
+}
+
+.day-details-msg {
+  min-height: 20px;
+  font-size: 0.8rem;
+  color: var(--sage-deep);
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+/* Notes Section Redesign */
+.note-area {
+  border-top: 1px dashed var(--grey-300);
+  padding-top: 24px;
+}
+
+.note-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.note-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--grey-900);
+  font-weight: 800;
+}
+
+.note-label .title-icon {
+  margin-right: 6px;
+}
+
+.note-sublabel {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--grey-500);
+  font-weight: 600;
+}
+
+/* Integration Area */
+.integration-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Reusable Action Buttons */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.action-btn:active {
+  transform: scale(0.97);
+}
+
+.action-btn-primary {
+  background: var(--grey-900);
+  color: var(--white);
+  min-width: 180px;
+  padding: 10px 24px;
+}
+
+.action-btn-primary:hover {
+  background: var(--black);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.action-btn-secondary {
+  background: var(--cream);
+  color: var(--grey-700);
+  border-color: var(--grey-300);
+}
+
+.action-btn-secondary:hover {
+  background: var(--white);
+  border-color: var(--grey-400);
+  color: var(--grey-900);
+}
+
+.action-btn-integration {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.action-btn-integration:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
+/* LeetCode Sync Results */
+.leetcode-synced-list {
+  display: none;
+  margin-top: 20px;
+  background: rgba(255, 170, 0, 0.05);
+  border: 1px solid rgba(255, 170, 0, 0.15);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.leetcode-list-title {
+  margin-bottom: 12px;
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.leetcode-list-title::before {
+  content: '⚡';
+  margin-right: 6px;
+}
+
+.leetcode-problem-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leetcode-problem-tag {
+  display: block;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: var(--grey-800);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.leetcode-problem-tag::before {
+  content: '•';
+  color: var(--gold);
+  margin-right: 8px;
+  font-weight: 900;
+}
+
+/* ============================================================
+   TIER 1 — MOBILE adjustments
+   ============================================================ */
+
+@media (max-width: 600px) {
+  .modal-box {
+    padding: 24px 20px 20px;
+  }
+
+  .day-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .day-metric:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .day-details-actions .action-btn-primary {
+    width: 100%;
+  }
+
+  .day-topic-chip {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Settings Modal specific */
+.settings-section {
+  margin-top: 24px;
+}
+.settings-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--grey-900);
+}
+h3.settings-label {
+  margin-bottom: 4px;
+}
+.settings-desc {
+  font-size: 0.9rem;
+  color: var(--grey-700);
+  margin-bottom: 12px;
+}
+.settings-input-row {
+  display: flex;
+  gap: 8px;
+}
+.flex-1 {
+  flex: 1;
+}
+.settings-actions {
+  display: flex;
+  gap: 8px;
+}
+.file-upload-btn {
+  cursor: pointer;
+  display: inline-flex;
+  margin: 0;
+}
+.file-upload-btn input {
+  display: none;
+}
+.settings-msg {
+  font-size: 0.85rem;
+  color: var(--sage-deep);
+  margin-top: 8px;
+  min-height: 18px;
+}
+

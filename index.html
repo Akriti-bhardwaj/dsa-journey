@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSA Journey — Daily C++ Tracker</title>
-  <meta name="description" content="Track your daily DSA practice with this beautiful calendar. Stay consistent, stay motivated!" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='52' cy='46' r='25' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5'/><path d='M31 30 L25 9 L45 24 Z' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5' stroke-linejoin='round'/><path d='M73 30 L79 9 L59 24 Z' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5' stroke-linejoin='round'/><ellipse cx='43' cy='46' rx='3' ry='4' fill='%23322D2A'/><ellipse cx='61' cy='46' rx='3' ry='4' fill='%23322D2A'/></svg>" />
+  <meta name="description"
+    content="Track your daily DSA practice with this beautiful calendar. Stay consistent, stay motivated!" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='52' cy='46' r='25' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5'/><path d='M31 30 L25 9 L45 24 Z' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5' stroke-linejoin='round'/><path d='M73 30 L79 9 L59 24 Z' fill='%23FBF6F1' stroke='%23322D2A' stroke-width='5' stroke-linejoin='round'/><ellipse cx='43' cy='46' rx='3' ry='4' fill='%23322D2A'/><ellipse cx='61' cy='46' rx='3' ry='4' fill='%23322D2A'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- Soft ambient background -->
@@ -27,19 +33,24 @@
         <div class="logo-area">
           <span class="logo-icon cat-icon cat-icon-logo" aria-hidden="true">
             <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
-              <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-              <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
-              <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
-              <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-              <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-              <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-              <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-              <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+              <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor"
+                stroke-width="4.5" stroke-linecap="round" />
+              <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07"
+                stroke="currentColor" stroke-width="4.5" />
+              <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor"
+                stroke-width="4.5" />
+              <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07"
+                stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" />
+              <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07"
+                stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" />
+              <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+              <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+              <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor" />
               <g class="cat-whiskers" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <line x1="19" y1="48" x2="35" y2="46"/>
-                <line x1="19" y1="56" x2="35" y2="53"/>
-                <line x1="85" y1="48" x2="69" y2="46"/>
-                <line x1="85" y1="56" x2="69" y2="53"/>
+                <line x1="19" y1="48" x2="35" y2="46" />
+                <line x1="19" y1="56" x2="35" y2="53" />
+                <line x1="85" y1="48" x2="69" y2="46" />
+                <line x1="85" y1="56" x2="69" y2="53" />
               </g>
             </svg>
           </span>
@@ -57,6 +68,13 @@
             <span class="badge-icon" id="headerCheckIcon"></span>
             <span><span id="headerTotalNum">0</span> days done</span>
           </div>
+          <button class="settings-btn" id="openSettingsBtn" aria-label="Settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon">
+              <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+            </svg>
+          </button>
         </div>
       </div>
     </header>
@@ -69,24 +87,30 @@
         <section class="cat-card" id="catCard">
           <div class="cat-avatar cat-icon cat-icon-hero" id="catAvatar" aria-hidden="true">
             <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
-              <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-              <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
-              <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
-              <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-              <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-              <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-              <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-              <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+              <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor"
+                stroke-width="4.5" stroke-linecap="round" />
+              <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07"
+                stroke="currentColor" stroke-width="4.5" />
+              <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor"
+                stroke-width="4.5" />
+              <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07"
+                stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" />
+              <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07"
+                stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" />
+              <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+              <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+              <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor" />
               <g class="cat-whiskers" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <line x1="19" y1="48" x2="35" y2="46"/>
-                <line x1="19" y1="56" x2="35" y2="53"/>
-                <line x1="85" y1="48" x2="69" y2="46"/>
-                <line x1="85" y1="56" x2="69" y2="53"/>
+                <line x1="19" y1="48" x2="35" y2="46" />
+                <line x1="19" y1="56" x2="35" y2="53" />
+                <line x1="85" y1="48" x2="69" y2="46" />
+                <line x1="85" y1="56" x2="69" y2="53" />
               </g>
             </svg>
           </div>
           <div class="cat-bubble">
-            <p class="cat-text" id="catText">Welcome back! Every problem you solve today is one step closer to your dream job. I believe in you.</p>
+            <p class="cat-text" id="catText">Welcome back! Every problem you solve today is one step closer to your
+              dream job. I believe in you.</p>
           </div>
         </section>
 
@@ -110,8 +134,8 @@
           <div class="stat-card stat-card-ring">
             <div class="ring-wrap">
               <svg class="ring-svg" viewBox="0 0 60 60">
-                <circle class="ring-track" cx="30" cy="30" r="25"/>
-                <circle class="ring-fill" id="consistencyRing" cx="30" cy="30" r="25"/>
+                <circle class="ring-track" cx="30" cy="30" r="25" />
+                <circle class="ring-fill" id="consistencyRing" cx="30" cy="30" r="25" />
               </svg>
               <div class="stat-value ring-value" id="statPct">0%</div>
             </div>
@@ -124,14 +148,19 @@
           <div class="calendar-card">
             <div class="calendar-cat cat-icon cat-icon-corner" aria-hidden="true">
               <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
-                <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-                <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5"/>
-                <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5"/>
-                <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
-                <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
-                <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-                <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-                <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+                <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor"
+                  stroke-width="5" stroke-linecap="round" />
+                <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.05"
+                  stroke="currentColor" stroke-width="5" />
+                <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.05" stroke="currentColor"
+                  stroke-width="5" />
+                <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.05"
+                  stroke="currentColor" stroke-width="5" stroke-linejoin="round" />
+                <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.05"
+                  stroke="currentColor" stroke-width="5" stroke-linejoin="round" />
+                <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+                <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+                <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor" />
               </svg>
             </div>
             <div class="calendar-header">
@@ -156,8 +185,18 @@
 
         <!-- Topics tracker -->
         <section class="topics-section">
-          <h2 class="section-title">C++ DSA Topic Tracker</h2>
-          <p class="section-sub">Click topics you've covered — your progress is saved!</p>
+          <div class="topics-header">
+            <div>
+              <h2 class="section-title">C++ DSA Topic Tracker</h2>
+              <p class="section-sub">Click topics you've covered — your progress is saved!</p>
+            </div>
+            <div class="topics-progress">
+              <span id="topicProgressText">0 / 22 topics (0%)</span>
+              <div class="progress-track">
+                <div class="progress-fill" id="topicProgressFill"></div>
+              </div>
+            </div>
+          </div>
           <div class="topics-grid" id="topicsGrid"></div>
         </section>
 
@@ -172,13 +211,8 @@
           </div>
 
           <form class="reminder-form" id="reminderForm" autocomplete="off">
-            <input
-              type="text"
-              class="reminder-input"
-              id="reminderInput"
-              placeholder="e.g. Revise DP on trees"
-              maxlength="120"
-            />
+            <input type="text" class="reminder-input" id="reminderInput" placeholder="e.g. Revise DP on trees tomorrow"
+              maxlength="120" />
             <button type="submit" class="reminder-add-btn" id="reminderAddBtn" aria-label="Add reminder">+</button>
           </form>
 
@@ -190,7 +224,8 @@
         <div class="sidebar-card note-mini-card">
           <h2 class="sidebar-title"><span class="title-icon" id="iconNoteTitle"></span>Today's Note</h2>
           <p class="sidebar-sub" id="todayNotePreviewSub">From today's check-in</p>
-          <p class="today-note-preview" id="todayNotePreview">No note added for today yet. Tap today on the calendar to add one.</p>
+          <p class="today-note-preview" id="todayNotePreview">No note added for today yet. Tap today on the calendar to
+            add one.</p>
         </div>
       </aside>
 
@@ -207,14 +242,19 @@
       <button class="modal-close" id="modalClose" aria-label="Close"></button>
       <div class="modal-cat cat-icon cat-icon-modal" id="modalCat" aria-hidden="true">
         <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="cat-illustration">
-          <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
-          <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5"/>
-          <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-          <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-          <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-          <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor"/>
-          <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor"/>
+          <path class="cat-tail" d="M85 95 Q112 88 108 62 Q105 46 90 49" fill="none" stroke="currentColor"
+            stroke-width="4.5" stroke-linecap="round" />
+          <ellipse class="cat-body" cx="55" cy="90" rx="29" ry="21" fill="currentColor" opacity="0.07"
+            stroke="currentColor" stroke-width="4.5" />
+          <circle class="cat-head" cx="52" cy="46" r="25" fill="currentColor" opacity="0.07" stroke="currentColor"
+            stroke-width="4.5" />
+          <path class="cat-ear cat-ear-left" d="M31 30 L25 9 L45 24 Z" fill="currentColor" opacity="0.07"
+            stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" />
+          <path class="cat-ear cat-ear-right" d="M73 30 L79 9 L59 24 Z" fill="currentColor" opacity="0.07"
+            stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" />
+          <ellipse class="cat-eye" cx="43" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+          <ellipse class="cat-eye" cx="61" cy="46" rx="2.6" ry="3.6" fill="currentColor" />
+          <path d="M49.5 54 L54.5 54 L52 57.5 Z" fill="currentColor" />
         </svg>
       </div>
       <h2 class="modal-title" id="modalTitle">Check in for today</h2>
@@ -222,41 +262,134 @@
 
       <!-- Toggle check-in -->
       <div class="checkin-area">
-        <button class="checkin-btn" id="checkinBtn">
+        <button class="checkin-btn" id="checkinBtn" type="button">
           <span class="checkin-icon" id="checkinIcon"></span>
           <span id="checkinLabel">Mark DSA Done</span>
         </button>
-        <button class="checkin-btn checkin-btn-other" id="otherBtn">
+
+        <button class="checkin-btn checkin-btn-other" id="otherBtn" type="button">
           <span class="checkin-icon" id="otherIcon"></span>
           <span id="otherLabel">Mark Other Study Done</span>
         </button>
       </div>
 
+      <!-- Daily study details -->
+      <div class="day-details-card">
+        <div class="day-details-head">
+          <div>
+            <h3>Study Details</h3>
+            <p>Track what you actually did today.</p>
+          </div>
+        </div>
+
+        <div class="day-metrics-grid">
+          <label class="day-metric">
+            <span>DSA study time</span>
+            <div class="metric-input-wrap">
+              <input type="number" id="dsaMinutes" min="0" max="1440" step="5" inputmode="numeric" placeholder="0" />
+              <span>min</span>
+            </div>
+          </label>
+
+          <label class="day-metric">
+            <span>Problems solved</span>
+            <div class="metric-input-wrap">
+              <input type="number" id="problemsSolved" min="0" max="999" step="1" inputmode="numeric" placeholder="0" />
+              <span>problems</span>
+            </div>
+          </label>
+
+          <label class="day-metric">
+            <span>Other study time</span>
+            <div class="metric-input-wrap">
+              <input type="number" id="otherMinutes" min="0" max="1440" step="5" inputmode="numeric" placeholder="0" />
+              <span>min</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="day-topic-section">
+          <div class="day-topic-heading">
+            <span>Topics practiced</span>
+            <span id="dayTopicCount">0 selected</span>
+          </div>
+
+          <div class="day-topic-picker" id="dayTopicPicker"></div>
+        </div>
+
+        <div class="day-details-actions">
+          <button class="action-btn action-btn-primary" id="saveDayDetailsBtn" type="button">
+            Save Study Details
+          </button>
+          <span class="day-details-msg" id="dayDetailsMsg"></span>
+        </div>
+
+        <div class="leetcode-synced-list" id="leetcodeSyncedList"></div>
+      </div>
+
       <!-- Note area -->
       <div class="note-area">
         <div class="note-toggle-row">
-          <span class="note-label"><span class="title-icon" id="iconNoteLabel"></span>Add a note about today's topics?</span>
-          <button class="note-toggle-btn" id="noteToggleBtn">Add Note</button>
+          <div class="note-header-text">
+            <span class="note-label"><span class="title-icon" id="iconNoteLabel"></span>Notes</span>
+            <p class="note-sublabel">Add context about what you learned.</p>
+          </div>
+          <button class="action-btn action-btn-secondary" id="noteToggleBtn">Add Note</button>
         </div>
         <div class="note-input-wrap" id="noteInputWrap" style="display:none;">
-          <textarea
-            class="note-textarea"
-            id="noteTextarea"
+          <textarea class="note-textarea" id="noteTextarea"
             placeholder="e.g. Solved 3 graph BFS problems, revised binary search trees, practiced recursion on LeetCode..."
-            rows="4"
-          ></textarea>
+            rows="4"></textarea>
           <div class="note-actions">
-            <button class="btn-save-note" id="btnSaveNote">Save Note</button>
-            <button class="btn-cancel-note" id="btnCancelNote">Cancel</button>
+            <button class="action-btn action-btn-primary" id="btnSaveNote">Save Note</button>
+            <button class="action-btn action-btn-secondary" id="btnCancelNote">Cancel</button>
           </div>
         </div>
         <div class="saved-note-display" id="savedNoteDisplay" style="display:none;">
           <div class="saved-note-text" id="savedNoteText"></div>
-          <button class="edit-note-btn" id="editNoteBtn">Edit</button>
+          <button class="action-btn action-btn-secondary edit-note-btn" id="editNoteBtn">Edit</button>
         </div>
       </div>
 
+      <div class="integration-area">
+        <button class="action-btn action-btn-integration" id="leetcodeSyncBtn">
+          Sync now
+        </button>
+      </div>
+
       <div class="modal-footer-msg" id="modalFooterMsg"></div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settingsModal" role="dialog" aria-modal="true" aria-label="Settings">
+    <div class="modal-box">
+      <button class="modal-close" id="settingsModalClose" aria-label="Close"></button>
+      <h2 class="modal-title">Settings</h2>
+
+      <div class="settings-group settings-section">
+        <label for="leetcodeUsername" class="settings-label">
+          LeetCode Username (for Sync)
+        </label>
+        <div class="settings-input-row">
+          <input type="text" id="leetcodeUsername" class="reminder-input flex-1" placeholder="e.g. akriti" />
+          <button id="saveSettingsBtn" class="action-btn action-btn-primary">Save</button>
+        </div>
+        <p class="settings-msg" id="settingsSaveMsg"></p>
+      </div>
+
+      <div class="settings-group settings-section">
+        <h3 class="settings-label">Data Backup</h3>
+        <p class="settings-desc">Export your journey data as a JSON file, or import a previous backup.</p>
+        <div class="settings-actions">
+          <button id="exportDataBtn" class="action-btn action-btn-primary">Export Data</button>
+          <label class="action-btn action-btn-secondary file-upload-btn">
+            Import Data
+            <input type="file" id="importDataInput" accept=".json" />
+          </label>
+        </div>
+        <p class="settings-msg" id="importMsg"></p>
+      </div>
     </div>
   </div>
 
@@ -268,51 +401,64 @@
     <button class="pet-hide-btn" id="petHideBtn" aria-label="Hide pet" title="Hide">&times;</button>
     <div class="pet-zzz" id="petZzz"><span>Z</span><span>Z</span><span>Z</span></div>
     <svg viewBox="0 0 100 82" class="pet-svg" id="petSvg" xmlns="http://www.w3.org/2000/svg">
-      <path class="pet-tail" d="M76 60 Q95 56 92 38 Q90 27 79 29" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+      <path class="pet-tail" d="M76 60 Q95 56 92 38 Q90 27 79 29" fill="none" stroke="currentColor" stroke-width="4.5"
+        stroke-linecap="round" />
       <!-- loafing body with tucked front paws -->
-      <path class="pet-body" d="M16 74 C10 74 8 62 11 53 C14 43 22 38 32 38 L54 38 C65 38 71 45 72 56 C73 66 68 74 58 75 C45 77 27 77 16 74 Z"
-            fill="currentColor" opacity="0.22" stroke="currentColor" stroke-width="4"/>
-      <ellipse class="pet-paw-tuck" cx="33" cy="73" rx="8" ry="5" fill="currentColor" opacity="0.16" stroke="currentColor" stroke-width="3"/>
-      <ellipse class="pet-paw-tuck" cx="50" cy="74" rx="8" ry="5" fill="currentColor" opacity="0.16" stroke="currentColor" stroke-width="3"/>
+      <path class="pet-body"
+        d="M16 74 C10 74 8 62 11 53 C14 43 22 38 32 38 L54 38 C65 38 71 45 72 56 C73 66 68 74 58 75 C45 77 27 77 16 74 Z"
+        fill="currentColor" opacity="0.22" stroke="currentColor" stroke-width="4" />
+      <ellipse class="pet-paw-tuck" cx="33" cy="73" rx="8" ry="5" fill="currentColor" opacity="0.16"
+        stroke="currentColor" stroke-width="3" />
+      <ellipse class="pet-paw-tuck" cx="50" cy="74" rx="8" ry="5" fill="currentColor" opacity="0.16"
+        stroke="currentColor" stroke-width="3" />
       <!-- head -->
-      <circle class="pet-head" cx="38" cy="34" r="20" fill="currentColor" opacity="0.22" stroke="currentColor" stroke-width="4"/>
-      <path class="pet-ear pet-ear-left" d="M21 22 Q17 8 19 5 Q25 4 34 17 Q28 15 21 22 Z" fill="currentColor" opacity="0.22" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-      <path class="pet-ear pet-ear-right" d="M55 22 Q59 8 57 5 Q51 4 42 17 Q48 15 55 22 Z" fill="currentColor" opacity="0.22" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-      <path class="pet-ear-inner pet-ear-inner-left" d="M23 18 Q21 10 22 8 Q26 9 30 16 Q26 15 23 18 Z" fill="var(--pet-blush)" opacity="0.75"/>
-      <path class="pet-ear-inner pet-ear-inner-right" d="M53 18 Q55 10 54 8 Q50 9 46 16 Q50 15 53 18 Z" fill="var(--pet-blush)" opacity="0.75"/>
+      <circle class="pet-head" cx="38" cy="34" r="20" fill="currentColor" opacity="0.22" stroke="currentColor"
+        stroke-width="4" />
+      <path class="pet-ear pet-ear-left" d="M21 22 Q17 8 19 5 Q25 4 34 17 Q28 15 21 22 Z" fill="currentColor"
+        opacity="0.22" stroke="currentColor" stroke-width="4" stroke-linejoin="round" />
+      <path class="pet-ear pet-ear-right" d="M55 22 Q59 8 57 5 Q51 4 42 17 Q48 15 55 22 Z" fill="currentColor"
+        opacity="0.22" stroke="currentColor" stroke-width="4" stroke-linejoin="round" />
+      <path class="pet-ear-inner pet-ear-inner-left" d="M23 18 Q21 10 22 8 Q26 9 30 16 Q26 15 23 18 Z"
+        fill="var(--pet-blush)" opacity="0.75" />
+      <path class="pet-ear-inner pet-ear-inner-right" d="M53 18 Q55 10 54 8 Q50 9 46 16 Q50 15 53 18 Z"
+        fill="var(--pet-blush)" opacity="0.75" />
       <g class="pet-whiskers" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.4">
-        <line x1="19" y1="36" x2="6" y2="34"/>
-        <line x1="19" y1="40" x2="6" y2="41"/>
-        <line x1="57" y1="36" x2="70" y2="34"/>
-        <line x1="57" y1="40" x2="70" y2="41"/>
+        <line x1="19" y1="36" x2="6" y2="34" />
+        <line x1="19" y1="40" x2="6" y2="41" />
+        <line x1="57" y1="36" x2="70" y2="34" />
+        <line x1="57" y1="40" x2="70" y2="41" />
       </g>
       <!-- blush -->
-      <ellipse class="pet-blush" cx="24" cy="40" rx="3.4" ry="2.2" fill="var(--pet-blush)" opacity="0.55"/>
-      <ellipse class="pet-blush" cx="52" cy="40" rx="3.4" ry="2.2" fill="var(--pet-blush)" opacity="0.55"/>
+      <ellipse class="pet-blush" cx="24" cy="40" rx="3.4" ry="2.2" fill="var(--pet-blush)" opacity="0.55" />
+      <ellipse class="pet-blush" cx="52" cy="40" rx="3.4" ry="2.2" fill="var(--pet-blush)" opacity="0.55" />
       <!-- content, half-lidded eyes -->
       <g class="pet-eyes-open">
-        <ellipse cx="30" cy="33" rx="2.6" ry="3.3" fill="var(--pet-ink)"/>
-        <ellipse cx="46" cy="33" rx="2.6" ry="3.3" fill="var(--pet-ink)"/>
-        <circle cx="29.2" cy="31.6" r="0.8" fill="#fff" opacity="0.85"/>
-        <circle cx="45.2" cy="31.6" r="0.8" fill="#fff" opacity="0.85"/>
-        <path d="M27 31.6 Q30 29.6 33 31.6" fill="currentColor" opacity="0.22" stroke="none"/>
-        <path d="M43 31.6 Q46 29.6 49 31.6" fill="currentColor" opacity="0.22" stroke="none"/>
+        <ellipse cx="30" cy="33" rx="2.6" ry="3.3" fill="var(--pet-ink)" />
+        <ellipse cx="46" cy="33" rx="2.6" ry="3.3" fill="var(--pet-ink)" />
+        <circle cx="29.2" cy="31.6" r="0.8" fill="#fff" opacity="0.85" />
+        <circle cx="45.2" cy="31.6" r="0.8" fill="#fff" opacity="0.85" />
+        <path d="M27 31.6 Q30 29.6 33 31.6" fill="currentColor" opacity="0.22" stroke="none" />
+        <path d="M43 31.6 Q46 29.6 49 31.6" fill="currentColor" opacity="0.22" stroke="none" />
       </g>
       <g class="pet-eyes-closed">
-        <path d="M27 33 q3 2.3 6 0" fill="none" stroke="var(--pet-ink)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M43 33 q3 2.3 6 0" fill="none" stroke="var(--pet-ink)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M27 33 q3 2.3 6 0" fill="none" stroke="var(--pet-ink)" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M43 33 q3 2.3 6 0" fill="none" stroke="var(--pet-ink)" stroke-width="1.8" stroke-linecap="round" />
       </g>
       <!-- content little smile -->
-      <path class="pet-nose" d="M36.3 39.5 L39.7 39.5 L38 41.6 Z" fill="var(--pet-ink)"/>
-      <path class="pet-mouth" d="M38 41.6 Q34 45.5 30.5 43.2 M38 41.6 Q42 45.5 45.5 43.2" fill="none" stroke="var(--pet-ink)" stroke-width="1.4" stroke-linecap="round"/>
+      <path class="pet-nose" d="M36.3 39.5 L39.7 39.5 L38 41.6 Z" fill="var(--pet-ink)" />
+      <path class="pet-mouth" d="M38 41.6 Q34 45.5 30.5 43.2 M38 41.6 Q42 45.5 45.5 43.2" fill="none"
+        stroke="var(--pet-ink)" stroke-width="1.4" stroke-linecap="round" />
       <g class="pet-paw-group">
-        <path class="pet-paw" d="M50 61 Q56 61 56 54 L56 48" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+        <path class="pet-paw" d="M50 61 Q56 61 56 54 L56 48" fill="none" stroke="currentColor" stroke-width="4.5"
+          stroke-linecap="round" />
       </g>
-      <path class="pet-heart" d="M38 5 C35 1 30 1 30 -3 C30 -7 34 -9 38 -5 C42 -9 46 -7 46 -3 C46 1 41 1 38 5 Z" fill="var(--pet-blush)"/>
+      <path class="pet-heart" d="M38 5 C35 1 30 1 30 -3 C30 -7 34 -9 38 -5 C42 -9 46 -7 46 -3 C46 1 41 1 38 5 Z"
+        fill="var(--pet-blush)" />
     </svg>
   </div>
   <button class="pet-peek" id="petPeek" aria-label="Show pet" title="Show pet"></button>
 
   <script src="app.js"></script>
 </body>
+
 </html>
