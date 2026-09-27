@@ -88,6 +88,7 @@ function normalizeEntry(raw = {}) {
   return {
     done: !!raw.done,
     other: !!raw.other,
+    chore: !!raw.chore,
 
     note: typeof raw.note === 'string'
       ? raw.note.slice(0, 5000)
@@ -467,6 +468,7 @@ function renderCalendar(direction) {
     const isDone = !!entry.done;
     const isOther = !!entry.other;
     const isBoth = isDone && isOther;
+    const isChore = !!entry.chore;
     const hasNote = !!(entry.note && entry.note.trim());
 
     const el = document.createElement('div');
@@ -480,6 +482,7 @@ function renderCalendar(direction) {
     else classes += ' normal';
     if (isToday) classes += ' today-cell';
     if (hasNote) classes += ' has-note';
+    if (isChore) classes += ' has-chore';
     el.className = classes;
     el.style.animationDelay = (dayIndex * 12) + 'ms';
     dayIndex++;
@@ -552,6 +555,21 @@ function openModal(day, key) {
     otherBtn.classList.remove('checked');
     otherIcon.innerHTML = svgIcon('square');
     otherLabel.textContent = 'Mark Other Study Done';
+  }
+
+  // Chores/productive button
+  const isChore = !!entry.chore;
+  const choreBtn = document.getElementById('choreBtn');
+  const choreIcon = document.getElementById('choreIcon');
+  const choreLabel = document.getElementById('choreLabel');
+  if (isChore) {
+    choreBtn.classList.add('checked');
+    choreIcon.innerHTML = svgIcon('checkSquare');
+    choreLabel.textContent = 'Chores/Productive Done! (click to undo)';
+  } else {
+    choreBtn.classList.remove('checked');
+    choreIcon.innerHTML = svgIcon('square');
+    choreLabel.textContent = 'Mark Chores/Productive Done';
   }
 
   // Note display
@@ -786,6 +804,39 @@ document.getElementById('otherBtn').addEventListener('click', () => {
     btn.classList.remove('checked');
     icon.innerHTML = svgIcon('square');
     label.textContent = 'Mark Other Study Done';
+    document.getElementById('modalFooterMsg').textContent = '';
+  }
+
+  renderCalendar();
+  updateStats();
+});
+
+// Chores/productive toggle (anything productive that isn't DSA or study — chores, errands, etc.)
+document.getElementById('choreBtn').addEventListener('click', () => {
+  if (!selectedKey) return;
+  const entry = data[selectedKey] || {};
+  const isChore = !!entry.chore;
+  const newVal = !isChore;
+
+  data[selectedKey] = { ...entry, chore: newVal };
+  saveData(data);
+
+  const btn = document.getElementById('choreBtn');
+  const icon = document.getElementById('choreIcon');
+  const label = document.getElementById('choreLabel');
+
+  btn.classList.add('pop');
+  setTimeout(() => btn.classList.remove('pop'), 260);
+
+  if (newVal) {
+    btn.classList.add('checked');
+    icon.innerHTML = svgIcon('checkSquare');
+    label.textContent = 'Chores/Productive Done! (click to undo)';
+    document.getElementById('modalFooterMsg').textContent = 'Nice — productive day off the board too.';
+  } else {
+    btn.classList.remove('checked');
+    icon.innerHTML = svgIcon('square');
+    label.textContent = 'Mark Chores/Productive Done';
     document.getElementById('modalFooterMsg').textContent = '';
   }
 
