@@ -474,20 +474,23 @@ function renderCalendar(direction) {
     const el = document.createElement('div');
 
     let classes = 'day-cell day-enter';
-    if (isBoth) classes += ' both';
+    if (isDone && isOther && isChore) classes += ' all-three';
+    else if (isDone && isChore) classes += ' dsa-chore';
+    else if (isOther && isChore) classes += ' other-chore';
+    else if (isBoth) classes += ' both';
     else if (isDone) classes += ' done';
     else if (isOther) classes += ' other-only';
+    else if (isChore) classes += ' chore-only';
     else if (isFuture) classes += ' normal future';
     else if (isPast) classes += ' missed';
     else classes += ' normal';
     if (isToday) classes += ' today-cell';
     if (hasNote) classes += ' has-note';
-    if (isChore) classes += ' has-chore';
     el.className = classes;
     el.style.animationDelay = (dayIndex * 12) + 'ms';
     dayIndex++;
 
-    if (isDone || isOther) {
+    if (isDone || isOther || isChore) {
       el.innerHTML = `<span class="day-tick">${svgIcon('checkCircle')}</span><span class="day-num">${d}</span>`;
     } else {
       el.innerHTML = `<span class="day-num">${d}</span>`;
